@@ -3,7 +3,7 @@ from pathlib import Path
 import quickjs
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPTS = ["data/generated-faculty.js", "seed.js", "summer-data.js", "modules-data.js", "modules.js", "faculty-review.js", "app.js"]
+SCRIPTS = ["data/generated-faculty.js", "seed.js", "summer-data.js", "modules-data.js", "modules.js", "faculty-review.js", "data-tools.js", "application-workspace.js", "app.js"]
 VIEWS = [
     "dashboard", "programs", "faculty", "matrix", "research", "papers",
     "publications", "sop", "recommendations", "contact_workspace", "tests",
