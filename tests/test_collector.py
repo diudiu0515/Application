@@ -14,6 +14,7 @@ class CollectorQualityTests(unittest.TestCase):
 
     def test_person_name_filter_rejects_ui_labels(self):
         self.assertTrue(collector.name_like("Jeannette Bohg"))
+        self.assertEqual(collector.extract_name("Jesse Thomason Assistant Professor of Computer Science"), "Jesse Thomason")
         self.assertFalse(collector.name_like("Load More People"))
         self.assertFalse(collector.name_like("Research Institutes and Centers"))
 
@@ -23,5 +24,10 @@ class CollectorQualityTests(unittest.TestCase):
         self.assertIn("multimodal_vlm", primary)
         self.assertIn("robotics_embodied", primary)
         self.assertNotIn("llm_reasoning", primary)
+
+    def test_hard_sites_have_explicit_adapters(self):
+        adapters = json.loads((ROOT / "config/faculty-adapters.json").read_text())
+        self.assertIn("Carnegie Mellon University", adapters)
+        self.assertGreaterEqual(len(adapters["Carnegie Mellon University"]["directories"]), 4)
 
 if __name__ == "__main__": unittest.main()

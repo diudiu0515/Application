@@ -15,10 +15,13 @@ ROOT=Path(__file__).resolve().parents[1]
 UA="ApplicationIntelligenceBot/1.0 (+https://github.com/diudiu0515/Application)"
 HINTS=("faculty","people","directory","professor","academic-staff")
 BLOCK=("admission","student","alumni","staff","news","event","course","login","giving")
-NAME_BLOCK=("program","computer","science","research","committee","faculty","project","specialization","requirement","education","institute","center","university","school","department","about","online","load","more")
-PROFILE_HINTS=("/people/","/faculty/","/profile/","/profiles/","/~")
+NAME_BLOCK=("program","computer","science","research","committee","faculty","project","specialization","requirement","education","institute","center","university","school","department","about","online","load","more","people","advisory","expand","collapse","search")
+PROFILE_HINTS=("/people/","/faculty/","/profile/","/profiles/","/directory/","/staff/","/~")
+URL_BLOCK=("admission","student","alumni","news","event","course","login","giving")
+ROLE_SUFFIX_RE=re.compile(r"\s+(?:(?:assistant|associate|adjunct|research|visiting|courtesy|emeritus|emerita|practice|clinical|teaching|part-time|senior|distinguished|wise|gabilan)\s+)*(?:professor|lecturer)\b.*$",re.I)
 WEIGHTS={}
 PRIMARY=set()
+ADAPTERS={}
 ROLE_RE=re.compile(r"\b(assistant professor|associate professor|professor|faculty|principal investigator)\b",re.I)
 class Parser(HTMLParser):
     def __init__(self): super().__init__(); self.links=[]; self.text=[]; self.main_text=[]; self.href=None; self.anchor=[]; self.skip=0; self.main_depth=0
@@ -49,6 +52,12 @@ def link(base,href):
     if not href or href.startswith(("#","mailto:","tel:","javascript:")): return None
     url=urljoin(base,href).split("#")[0]
     return url if urlparse(url).scheme in ("http","https") else None
+
+def extract_name(text):
+    text=" ".join(text.split()).strip(" |,–—")
+    match=ROLE_SUFFIX_RE.search(text)
+    if match: text=text[:match.start()]
+    return text if name_like(text) else None
 def name_like(text):
     text=" ".join(text.split()).strip(" |,–—")
     words=text.split()
@@ -57,7 +66,7 @@ def name_like(text):
     return all(bool(re.match(r"^[A-Z][A-Za-zÀ-ÖØ-öø-ÿ.-]*$", w)) for w in words)
 def sid(prefix,value): return prefix+hashlib.sha1(value.encode()).hexdigest()[:12]
 
-def directory_urls(home):
+def directory_urls(home,school=None):
     p=parse(fetch(home)); found=[]
     for label,href in p.links:
         url=link(home,href)
@@ -65,14 +74,16 @@ def directory_urls(home):
             score=sum(x in (label+" "+url).lower() for x in HINTS)
             if score: found.append((score,url))
     guesses=[urljoin(home,x) for x in ("faculty/","people/faculty/","people/","directory/")]
-    return list(dict.fromkeys([x[1] for x in sorted(set(found),reverse=True)[:5]]+guesses+[home]))
+    extras=ADAPTERS.get(school,{}).get("directories",[])
+    return list(dict.fromkeys(extras+[x[1] for x in sorted(set(found),reverse=True)[:5]]+guesses+[home]))
 
 def profile_urls(home,directory):
     p=parse(fetch(directory)); found={}
     for label,href in p.links:
         url=link(directory,href)
-        if url and same(home,url) and name_like(label) and any(x in url.lower() for x in PROFILE_HINTS) and not any(x in url.lower() for x in BLOCK):
-            found.setdefault(url," ".join(label.split()))
+        candidate=extract_name(label)
+        if url and (same(home,url) or same(directory,url)) and candidate and any(x in url.lower() for x in PROFILE_HINTS) and not any(x in url.lower() for x in URL_BLOCK):
+            found.setdefault(url,candidate)
     return [(name,url) for url,name in found.items()][:140]
 
 def assess(args):
@@ -90,7 +101,7 @@ def assess(args):
 def collect_school(entry,families):
     school,home=entry; profiles={}; errors=[]
     try:
-        for directory in directory_urls(home):
+        for directory in directory_urls(home,school):
             try:
                 for name,url in profile_urls(home,directory): profiles.setdefault(url,name)
             except Exception as e: errors.append(f"{directory}: {type(e).__name__}")
@@ -114,8 +125,10 @@ def emit(results,path):
     return payload
 
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument("--limit-schools",type=int); args=ap.parse_args()
+    ap=argparse.ArgumentParser(); ap.add_argument("--limit-schools",type=int); ap.add_argument("--school"); args=ap.parse_args()
     targets=json.loads((ROOT/"config/top50-programs.json").read_text())["programs"]
+    if args.school: targets=[x for x in targets if args.school.lower() in x[0].lower()]
+    ADAPTERS.update(json.loads((ROOT/"config/faculty-adapters.json").read_text()))
     if args.limit_schools: targets=targets[:args.limit_schools]
     config=json.loads((ROOT/"config/research-directions.json").read_text()); families=config["families"]; WEIGHTS.update(config.get("strategy",{}).get("family_weights",{})); PRIMARY.update(config.get("strategy",{}).get("primary_families",[]))
     results=[]

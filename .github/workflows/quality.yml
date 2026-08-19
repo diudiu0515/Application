@@ -19,6 +19,6 @@ jobs:
       - run: node --check app.js && node --check modules.js && node --check modules-data.js && node --check faculty-review.js && node --check data-tools.js && node --check application-workspace.js && node --check evidence.js && node --check calendar-workspace.js && node --check seed.js
       - run: python -m py_compile scripts/collect_faculty.py
       - run: python -m unittest tests/test_collector.py
-      - run: python -m json.tool config/top50-programs.json >/dev/null && python -m json.tool config/research-directions.json >/dev/null
+      - run: python -m json.tool config/top50-programs.json >/dev/null && python -m json.tool config/research-directions.json >/dev/null && python -m json.tool config/faculty-adapters.json >/dev/null
       - run: python -m pip install quickjs==1.19.4
       - run: python tests/runtime_smoke.py
