@@ -2,8 +2,8 @@ window.SEED_DATA = {
   meta: { version: 1, cycle: "2028 Fall", createdAt: "2026-08-20T00:00:00.000Z" },
   profile: {
     name: "Candidate", institution: "Tsinghua University", department: "Computer Science",
-    degree: "B.S.", cycle: "2028 Fall", target: "US CS / AI PhD, Top 30 + strong advisors",
-    focus: ["Multimodal AI", "LLM Reasoning", "Benchmark & Data", "Social Reasoning"],
+    degree: "B.S.", gpa: 3.3, cycle: "2028 Fall", target: "US CS / AI PhD · Multimodal + Robotics",
+    focus: ["Multimodal AI", "Robotics / Embodied AI", "Video & Spatial Reasoning", "Benchmark & Data"],
     statement: "Build reliable multimodal reasoning systems that track latent human state, perspective, and causality over time."
   },
   projects: [

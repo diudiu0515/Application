@@ -1,9 +1,16 @@
 {
+  "strategy": {
+    "candidate_gpa": 3.3,
+    "primary_families": ["multimodal_vlm", "robotics_embodied", "video_ego_exo"],
+    "secondary_families": ["spatial_interaction", "affective_social"],
+    "family_weights": {"multimodal_vlm": 1.35, "robotics_embodied": 1.35, "video_ego_exo": 1.2, "spatial_interaction": 1.1, "affective_social": 0.75, "llm_reasoning": 0.6, "benchmark_data": 0.7}
+  },
   "families": {
     "affective_social": ["affective computing", "emotion recognition", "emotion reasoning", "social intelligence", "social reasoning", "human-centered ai", "theory of mind"],
     "multimodal_vlm": ["multimodal", "vision-language", "vision language", "vlm", "multimodal llm", "audio-visual", "language and vision"],
     "video_ego_exo": ["video understanding", "video qa", "egocentric", "ego-exo", "first-person vision", "temporal grounding", "gaze"],
-    "spatial_embodied": ["spatial reasoning", "3d vision", "embodied ai", "human-object interaction", "scene understanding", "perspective", "human intent"],
+    "robotics_embodied": ["robotics", "robot learning", "embodied ai", "embodied intelligence", "manipulation", "navigation", "vision and robotics", "human-robot interaction"],
+    "spatial_interaction": ["spatial reasoning", "3d vision", "human-object interaction", "scene understanding", "perspective", "human intent"],
     "llm_reasoning": ["large language model", "llm", "reasoning", "commonsense", "counterfactual", "causal reasoning", "interactive agent"],
     "benchmark_data": ["benchmark", "dataset", "evaluation", "data-centric", "data curation"]
   }

@@ -17,6 +17,7 @@ HINTS=("faculty","people","directory","professor","academic-staff")
 BLOCK=("admission","student","alumni","staff","news","event","course","login","giving")
 NAME_BLOCK=("program","computer","science","research","committee","faculty","project","specialization","requirement","education","institute","center","university","school","department","about","online")
 PROFILE_HINTS=("/people/","/faculty/","/profile/","/profiles/","/~")
+WEIGHTS={}
 
 class Parser(HTMLParser):
     def __init__(self): super().__init__(); self.links=[]; self.text=[]; self.href=None; self.anchor=[]
@@ -77,7 +78,8 @@ def assess(args):
     total=sum(map(len,hits.values()))
     if total<2: return None
     keywords=sorted({k for keys in hits.values() for k in keys})
-    return {"school":school,"name":name,"url":url,"families":hits,"keywords":keywords,"score":min(95,38+8*len(hits)+3*total)}
+    weighted=sum(len(keys)*WEIGHTS.get(family,1) for family,keys in hits.items())
+    return {"school":school,"name":name,"url":url,"families":hits,"keywords":keywords,"score":min(95,round(34+7*len(hits)+4*weighted))}
 
 def collect_school(entry,families):
     school,home=entry; profiles={}; errors=[]
@@ -109,7 +111,7 @@ def main():
     ap=argparse.ArgumentParser(); ap.add_argument("--limit-schools",type=int); args=ap.parse_args()
     targets=json.loads((ROOT/"config/top50-programs.json").read_text())["programs"]
     if args.limit_schools: targets=targets[:args.limit_schools]
-    families=json.loads((ROOT/"config/research-directions.json").read_text())["families"]
+    config=json.loads((ROOT/"config/research-directions.json").read_text()); families=config["families"]; WEIGHTS.update(config.get("strategy",{}).get("family_weights",{}))
     results=[]
     for i,item in enumerate(targets,1):
         print(f"[{i}/{len(targets)}] {item[0]}",flush=True); results.append(collect_school(item,families)); print(f"  candidates={len(results[-1][2])} errors={len(results[-1][3])}",flush=True); time.sleep(.2)
