@@ -1,0 +1,199 @@
+generator client { provider = "prisma-client-js" }
+datasource db { provider = "sqlite"; url = env("DATABASE_URL") }
+
+enum VerificationStatus { official_confirmed secondary_source unverified outdated partially_corroborated corroborated contradicted }
+enum RecruitingStatus { confirmed_recruiting likely_recruiting unknown not_recruiting }
+enum ConsiderationStatus { not_reviewed researching considering high_priority backup contact_later not_considering archived }
+enum ApplicationStatus { considering shortlisted preparing ready submitted interview offer rejected withdrawn }
+enum ContactStatus { not_planned planning drafted sent replied follow_up meeting no_response }
+enum ProjectStatus { idea active experiment writing submitted under_review accepted }
+
+model CandidateProfile {
+  id String @id @default(cuid())
+  name String
+  institution String?
+  department String?
+  degree String?
+  cycle String
+  target String?
+  statement String?
+  projects ResearchProject[]
+  cvItems CvItem[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model ResearchProject {
+  id String @id @default(cuid())
+  candidateId String
+  candidate CandidateProfile @relation(fields:[candidateId], references:[id], onDelete:Cascade)
+  name String
+  status ProjectStatus
+  problem String?
+  motivation String?
+  method String?
+  contribution String?
+  result String?
+  futureDirection String?
+  keywords Json
+  matches FacultyProjectMatch[]
+  publications Publication[]
+}
+model Publication {
+  id String @id @default(cuid())
+  projectId String?
+  project ResearchProject? @relation(fields:[projectId], references:[id])
+  title String
+  venue String?
+  year Int?
+  status String
+  authorOrder Int?
+  coauthors Json?
+  submissionDeadline DateTime?
+}
+model School {
+  id String @id @default(cuid())
+  name String
+  city String?
+  state String?
+  country String @default("USA")
+  programs Program[]
+  faculty Faculty[]
+  priorities SchoolPriority[]
+  offers Offer[]
+}
+model Program {
+  id String @id @default(cuid())
+  schoolId String
+  school School @relation(fields:[schoolId], references:[id], onDelete:Cascade)
+  department String
+  name String
+  degree String @default("PhD")
+  cycle String
+  deadline DateTime?
+  priorityDeadline DateTime?
+  portalUrl String?
+  fee Float?
+  requirements Json?
+  internationalRules Json?
+  funding Json?
+  admissionModel String?
+  programMetrics Json?
+  faculty Faculty[]
+  applications Application[]
+  rankings Ranking[]
+}
+model Ranking {
+  id String @id @default(cuid())
+  programId String
+  program Program @relation(fields:[programId], references:[id], onDelete:Cascade)
+  source String
+  year Int
+  rank Int
+}
+model Faculty {
+  id String @id @default(cuid())
+  schoolId String
+  school School @relation(fields:[schoolId], references:[id])
+  programId String?
+  program Program? @relation(fields:[programId], references:[id])
+  name String
+  position String?
+  email String?
+  websites Json?
+  interests Json
+  recruiting RecruitingStatus @default(unknown)
+  consideration ConsiderationStatus @default(not_reviewed)
+  whyConsider String?
+  concerns String?
+  decisionRationale String?
+  completionScore Int @default(0)
+  matches FacultyProjectMatch[]
+  papers Paper[]
+  members LabMember[]
+  contacts FacultyContact[]
+  checklist FacultyChecklistItem[]
+  evidence EvidenceClaim[]
+  events FacultyTimelineEvent[]
+}
+model FacultyProjectMatch {
+  id String @id @default(cuid())
+  facultyId String
+  faculty Faculty @relation(fields:[facultyId], references:[id], onDelete:Cascade)
+  projectId String
+  project ResearchProject @relation(fields:[projectId], references:[id], onDelete:Cascade)
+  score Int
+  dimensions Json
+  explanation String
+  pitch String?
+  @@unique([facultyId, projectId])
+}
+model Paper {
+  id String @id @default(cuid())
+  facultyId String
+  faculty Faculty @relation(fields:[facultyId], references:[id], onDelete:Cascade)
+  title String
+  authors Json?
+  venue String?
+  year Int?
+  url String?
+  abstract String?
+  importance String?
+  readingStatus String @default("unread")
+  whyRelevant String?
+  potentialGap String?
+  notes String?
+}
+model LabMember {
+  id String @id @default(cuid())
+  facultyId String
+  faculty Faculty @relation(fields:[facultyId], references:[id], onDelete:Cascade)
+  name String
+  role String
+  education Json?
+  isTsinghuaAlumni Boolean?
+  tsinghuaDetails Json?
+  publicContacts Json?
+  contactCandidateScore Int?
+  whyUseful String?
+}
+model SchoolPriority {
+  id String @id @default(cuid())
+  schoolId String
+  school School @relation(fields:[schoolId], references:[id], onDelete:Cascade)
+  cycle String
+  tier String
+  score Int
+  dimensions Json
+  whyApply String?
+  risks String?
+  @@unique([schoolId, cycle])
+}
+model Application {
+  id String @id @default(cuid())
+  programId String
+  program Program @relation(fields:[programId], references:[id])
+  status ApplicationStatus
+  deadline DateTime?
+  notes String?
+  tasks ApplicationTask[]
+  sopDocuments SOPDocument[]
+  recommendations Recommendation[]
+  interviews Interview[]
+  costs CostItem[]
+}
+model ApplicationTask { id String @id @default(cuid()); applicationId String; application Application @relation(fields:[applicationId], references:[id], onDelete:Cascade); name String; status String; deadline DateTime?; completedAt DateTime?; notes String? }
+model SOPDocument { id String @id @default(cuid()); applicationId String; application Application @relation(fields:[applicationId], references:[id], onDelete:Cascade); version String; status String; wordLimit Int?; sections Json; facultyMentions Json? }
+model Recommender { id String @id @default(cuid()); name String; institution String?; relationship String?; projects Json?; strengthEstimate String?; recommendations Recommendation[] }
+model Recommendation { id String @id @default(cuid()); applicationId String; application Application @relation(fields:[applicationId], references:[id]); recommenderId String; recommender Recommender @relation(fields:[recommenderId], references:[id]); deadline DateTime?; requestedAt DateTime?; submittedAt DateTime?; materialsSent Json? }
+model FacultyContact { id String @id @default(cuid()); facultyId String; faculty Faculty @relation(fields:[facultyId], references:[id], onDelete:Cascade); status ContactStatus; subject String?; draft String?; sentAt DateTime?; repliedAt DateTime?; followUpAt DateTime?; responseType String?; responseSummary String? }
+model FacultyChecklistItem { id String @id @default(cuid()); facultyId String; faculty Faculty @relation(fields:[facultyId], references:[id], onDelete:Cascade); key String; completed Boolean @default(false); completedAt DateTime?; notes String?; @@unique([facultyId,key]) }
+model Source { id String @id @default(cuid()); name String; url String; type String; lastChecked DateTime; confidence String; verifications VerificationRecord[]; claims EvidenceClaim[] }
+model VerificationRecord { id String @id @default(cuid()); sourceId String; source Source @relation(fields:[sourceId], references:[id]); entityType String; entityId String; field String; status VerificationStatus; checkedAt DateTime; notes String? }
+model EvidenceClaim { id String @id @default(cuid()); facultyId String?; faculty Faculty? @relation(fields:[facultyId], references:[id]); sourceId String; source Source @relation(fields:[sourceId], references:[id]); category String; rawClaim String; reliability String; status VerificationStatus; postedAt DateTime?; collectedAt DateTime @default(now()) }
+model FacultyTimelineEvent { id String @id @default(cuid()); facultyId String; faculty Faculty @relation(fields:[facultyId], references:[id], onDelete:Cascade); at DateTime; type String; detail String; sourceId String? }
+model TestScore { id String @id @default(cuid()); type String; testDate DateTime?; scores Json; targetScore Float? }
+model Interview { id String @id @default(cuid()); applicationId String; application Application @relation(fields:[applicationId], references:[id]); facultyId String?; date DateTime; format String?; duration Int?; preparation Json?; notes Json? }
+model Offer { id String @id @default(cuid()); schoolId String; school School @relation(fields:[schoolId], references:[id]); advisor String?; dimensions Json; weights Json; score Float?; funding Json? }
+model CostItem { id String @id @default(cuid()); applicationId String; application Application @relation(fields:[applicationId], references:[id]); category String; estimated Float?; actual Float?; currency String @default("USD") }
+model Note { id String @id @default(cuid()); entityType String; entityId String; body String; tags Json?; createdAt DateTime @default(now()); updatedAt DateTime @updatedAt }
+model CvItem { id String @id @default(cuid()); candidateId String; candidate CandidateProfile @relation(fields:[candidateId], references:[id], onDelete:Cascade); section String; position Int; data Json }
