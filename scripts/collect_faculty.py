@@ -15,21 +15,27 @@ ROOT=Path(__file__).resolve().parents[1]
 UA="ApplicationIntelligenceBot/1.0 (+https://github.com/diudiu0515/Application)"
 HINTS=("faculty","people","directory","professor","academic-staff")
 BLOCK=("admission","student","alumni","staff","news","event","course","login","giving")
-NAME_BLOCK=("program","computer","science","research","committee","faculty","project","specialization","requirement","education","institute","center","university","school","department","about","online")
+NAME_BLOCK=("program","computer","science","research","committee","faculty","project","specialization","requirement","education","institute","center","university","school","department","about","online","load","more")
 PROFILE_HINTS=("/people/","/faculty/","/profile/","/profiles/","/~")
 WEIGHTS={}
-
+PRIMARY=set()
+ROLE_RE=re.compile(r"\b(assistant professor|associate professor|professor|faculty|principal investigator)\b",re.I)
 class Parser(HTMLParser):
-    def __init__(self): super().__init__(); self.links=[]; self.text=[]; self.href=None; self.anchor=[]
+    def __init__(self): super().__init__(); self.links=[]; self.text=[]; self.main_text=[]; self.href=None; self.anchor=[]; self.skip=0; self.main_depth=0
     def handle_starttag(self,tag,attrs):
+        if tag=="main": self.main_depth+=1
+        if tag in ("script","style","nav","header","footer","aside"): self.skip+=1
         if tag=="a": self.href=dict(attrs).get("href"); self.anchor=[]
     def handle_data(self,data):
         x=" ".join(data.split())
-        if x: self.text.append(x)
+        if x and self.main_depth and not self.skip: self.main_text.append(x)
+        if x and not self.skip: self.text.append(x)
         if self.href and x: self.anchor.append(x)
     def handle_endtag(self,tag):
         if tag=="a" and self.href:
             self.links.append((" ".join(self.anchor).strip(),self.href)); self.href=None; self.anchor=[]
+        if tag=="main" and self.main_depth: self.main_depth-=1
+        if tag in ("script","style","nav","header","footer","aside") and self.skip: self.skip-=1
 
 def fetch(url):
     req=Request(url,headers={"User-Agent":UA,"Accept":"text/html"})
@@ -71,12 +77,12 @@ def profile_urls(home,directory):
 
 def assess(args):
     school,name,url,families=args
-    try: text=" ".join(parse(fetch(url)).text).lower()
+    try: page=parse(fetch(url)); text=" ".join(page.main_text or page.text).lower()
     except Exception: return None
     hits={family:[k for k in keys if k in text] for family,keys in families.items()}
     hits={family:keys for family,keys in hits.items() if keys}
     total=sum(map(len,hits.values()))
-    if total<2: return None
+    if total<2 or not any(family in PRIMARY for family in hits) or not ROLE_RE.search(text): return None
     keywords=sorted({k for keys in hits.values() for k in keys})
     weighted=sum(len(keys)*WEIGHTS.get(family,1) for family,keys in hits.items())
     return {"school":school,"name":name,"url":url,"families":hits,"keywords":keywords,"score":min(95,round(34+7*len(hits)+4*weighted))}
@@ -111,7 +117,7 @@ def main():
     ap=argparse.ArgumentParser(); ap.add_argument("--limit-schools",type=int); args=ap.parse_args()
     targets=json.loads((ROOT/"config/top50-programs.json").read_text())["programs"]
     if args.limit_schools: targets=targets[:args.limit_schools]
-    config=json.loads((ROOT/"config/research-directions.json").read_text()); families=config["families"]; WEIGHTS.update(config.get("strategy",{}).get("family_weights",{}))
+    config=json.loads((ROOT/"config/research-directions.json").read_text()); families=config["families"]; WEIGHTS.update(config.get("strategy",{}).get("family_weights",{})); PRIMARY.update(config.get("strategy",{}).get("primary_families",[]))
     results=[]
     for i,item in enumerate(targets,1):
         print(f"[{i}/{len(targets)}] {item[0]}",flush=True); results.append(collect_school(item,families)); print(f"  candidates={len(results[-1][2])} errors={len(results[-1][3])}",flush=True); time.sleep(.2)

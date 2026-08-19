@@ -18,6 +18,7 @@ jobs:
           node-version: "22"
       - run: node --check app.js && node --check modules.js && node --check modules-data.js && node --check faculty-review.js && node --check seed.js
       - run: python -m py_compile scripts/collect_faculty.py
+      - run: python -m unittest tests/test_collector.py
       - run: python -m json.tool config/top50-programs.json >/dev/null && python -m json.tool config/research-directions.json >/dev/null
       - run: python -m pip install quickjs==1.19.4
       - run: python tests/runtime_smoke.py
