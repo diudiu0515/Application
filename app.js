@@ -4,7 +4,8 @@ let state = load();
 let currentView = "dashboard";
 let query = "";
 
-function load(){ try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || clone(window.SEED_DATA); } catch { return clone(window.SEED_DATA); } }
+function mergeAuto(saved){ const auto=window.AUTO_DATA||{}; for(const key of ["programs","faculty","sources"]){ const seen=new Set((saved[key]||[]).map(x=>x.id)); for(const item of auto[key]||[]) if(!seen.has(item.id)) (saved[key]||(saved[key]=[])).push(clone(item)); } return saved; }
+function load(){ try { return mergeAuto(JSON.parse(localStorage.getItem(STORAGE_KEY)) || clone(window.SEED_DATA)); } catch { return clone(window.SEED_DATA); } }
 function persist(action, entity, detail){
   if(action) state.history.unshift({id:uid("h"),at:new Date().toISOString(),action,entity,detail});
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));

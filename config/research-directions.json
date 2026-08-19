@@ -1,0 +1,10 @@
+{
+  "families": {
+    "affective_social": ["affective computing", "emotion recognition", "emotion reasoning", "social intelligence", "social reasoning", "human-centered ai", "theory of mind"],
+    "multimodal_vlm": ["multimodal", "vision-language", "vision language", "vlm", "multimodal llm", "audio-visual", "language and vision"],
+    "video_ego_exo": ["video understanding", "video qa", "egocentric", "ego-exo", "first-person vision", "temporal grounding", "gaze"],
+    "spatial_embodied": ["spatial reasoning", "3d vision", "embodied ai", "human-object interaction", "scene understanding", "perspective", "human intent"],
+    "llm_reasoning": ["large language model", "llm", "reasoning", "commonsense", "counterfactual", "causal reasoning", "interactive agent"],
+    "benchmark_data": ["benchmark", "dataset", "evaluation", "data-centric", "data curation"]
+  }
+}
