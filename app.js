@@ -4,7 +4,7 @@ let state = load();
 let currentView = "dashboard";
 let query = "";
 
-function mergeAuto(saved){ if(!saved.meta.strategyVersion){ saved.profile.gpa=3.3; saved.profile.target="US CS / AI PhD · Multimodal + Robotics"; saved.profile.focus=["Multimodal AI","Robotics / Embodied AI","Video & Spatial Reasoning","Benchmark & Data"]; saved.summerResearch=clone(window.SEED_DATA.summerResearch||[]); saved.meta.strategyVersion=2; } const auto=window.AUTO_DATA||{}; for(const key of ["programs","faculty","sources"]){ const seen=new Set((saved[key]||[]).map(x=>x.id)); for(const item of auto[key]||[]) if(!seen.has(item.id)) (saved[key]||(saved[key]=[])).push(clone(item)); } return saved; }
+function mergeAuto(saved){ if(!saved.meta.strategyVersion){ saved.profile.gpa=3.3; saved.profile.target="US CS / AI PhD · Multimodal + Robotics"; saved.profile.focus=["Multimodal AI","Robotics / Embodied AI","Video & Spatial Reasoning","Benchmark & Data"]; saved.summerResearch=clone(window.SEED_DATA.summerResearch||[]); saved.meta.strategyVersion=2; } const modules=["papers","publications","sopDocuments","recommenders","recommendations","contactRecords","tests","cvItems","interviews","offers","costs","labMembers","communityClaims","facultyTimeline","notes","tags","deadlines","aiTraces"]; for(const key of modules) if(!Array.isArray(saved[key])) saved[key]=clone(window.SEED_DATA[key]||[]); saved.meta.schemaVersion=3; const auto=window.AUTO_DATA||{}; for(const key of ["programs","faculty","sources"]){ const seen=new Set((saved[key]||[]).map(x=>x.id)); for(const item of auto[key]||[]) if(!seen.has(item.id)) (saved[key]||(saved[key]=[])).push(clone(item)); } return saved; }
 function load(){ try { return mergeAuto(JSON.parse(localStorage.getItem(STORAGE_KEY)) || clone(window.SEED_DATA)); } catch { return clone(window.SEED_DATA); } }
 function persist(action, entity, detail){
   if(action) state.history.unshift({id:uid("h"),at:new Date().toISOString(),action,entity,detail});
@@ -21,9 +21,11 @@ const daysTo = d => Math.ceil((new Date(d+"T00:00:00")-new Date())/86400000);
 const statusClass = s => /high|confirmed|submitted|offer|ready|active/i.test(s)?"green":/unknown|research|consider|prepar|likely/i.test(s)?"amber":/reject|outdated|not_/i.test(s)?"red":"blue";
 const nav = [
   ["Core",[["dashboard","⌂","Dashboard"],["programs","▦","Programs"],["faculty","♙","Faculty"],["matrix","⊞","Research Match"]]],
-  ["My Research",[["research","◈","Projects"],["papers","▤","Papers & Publications"]]],
-  ["Applications",[["shortlist","☆","School List"],["applications","✓","Application Tracker"],["contacts","✉","Professor Contact"]]],
-  ["Planning",[["summer","☀","Summer Research"],["calendar","□","Calendar"],["sources","◎","Sources & Verification"]]],
+  ["My Research",[["research","◈","Projects"],["papers","▤","Paper Tracking"],["publications","◫","Publications"],["cv","▧","CV Data"]]],
+  ["Applications",[["shortlist","☆","School List"],["applications","✓","Application Tracker"],["sop","¶","SOP Workspace"],["recommendations","♢","Recommendations"],["contact_workspace","✉","Professor Contact"]]],
+  ["Planning",[["summer","☀","Summer Research"],["calendar","□","Calendar"],["tests","A","Tests"],["costs","$","Costs"],["sources","◎","Sources & Verification"],["notes","✎","Notes"]]],
+  ["Faculty Intel",[["labnetwork","♧","Lab & Tsinghua"],["community","◉","Community Claims"],["faculty_timeline","↝","Evidence Timeline"]]],
+  ["Results",[["interviews","◇","Interviews"],["offers","◆","Offers"]]],
   ["System",[["history","↻","Change History"],["settings","⚙","Settings & Data"]]]
 ];
 
@@ -38,7 +40,7 @@ function shell(){
 }
 function head(kicker,title,sub,action=""){return `<div class="page-head"><div><div class="eyebrow">${kicker}</div><h1>${title}</h1><p>${sub}</p></div>${action?`<div class="head-actions">${action}</div>`:""}</div>`}
 function stat(label,value,hint){return `<div class="stat"><div class="label">${label}</div><div class="value">${value}</div><div class="hint">${hint}</div></div>`}
-function renderView(){return ({dashboard,programs,faculty,matrix,research,papers,shortlist,applications,contacts,summer,calendar,sources,history,settings}[currentView]||dashboard)()}
+function renderView(){const extended=window.extendedViews?.[currentView];return extended?extended():({dashboard,programs,faculty:facultyView,matrix,research,papers,shortlist,applications,contacts,summer,calendar,sources,history,settings}[currentView]||dashboard)()}
 
 function dashboard(){
   const high=state.faculty.filter(f=>bestScore(f.id)>=85).length, submitted=state.applications.filter(a=>a.status==="Submitted").length;
@@ -100,6 +102,7 @@ function bind(){
  document.getElementById("menu").onclick=()=>document.getElementById("sidebar").classList.toggle("open");document.getElementById("export").onclick=download;bindContent();
 }
 function bindContent(){
+ window.extendedBind?.();
  document.querySelectorAll("[data-add]").forEach(b=>b.onclick=()=>openForm(b.dataset.add));document.querySelectorAll("[data-edit-program]").forEach(b=>b.onclick=()=>openForm("program",b.dataset.editProgram));document.querySelectorAll("[data-edit-project]").forEach(b=>b.onclick=()=>openForm("project",b.dataset.editProject));document.querySelectorAll("[data-faculty]").forEach(b=>b.onclick=e=>{e.preventDefault();showFaculty(b.dataset.faculty)});document.querySelectorAll("[data-match]").forEach(b=>b.onclick=()=>showMatch(b.dataset.match));
  document.querySelectorAll("[data-task]").forEach(b=>b.onchange=()=>{let t=state.tasks.find(x=>x.id===b.dataset.task);t.done=b.checked;persist("Task updated",t.title,b.checked?"Completed":"Reopened");shell()});
  document.querySelectorAll(".quick-status").forEach(s=>s.onchange=()=>{let f=faculty(s.dataset.id);f.consideration=s.value;persist("Consideration changed",f.name,s.value)});document.querySelectorAll(".app-status").forEach(s=>s.onchange=()=>{let a=state.applications.find(x=>x.id===s.dataset.id);a.status=s.value;persist("Application status changed",program(a.programId)?.school,s.value)});document.querySelectorAll(".contact-status").forEach(s=>s.onchange=()=>{let f=faculty(s.dataset.id);f.contact=s.value;persist("Contact status changed",f.name,s.value)});
