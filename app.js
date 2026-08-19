@@ -40,7 +40,7 @@ function shell(){
 }
 function head(kicker,title,sub,action=""){return `<div class="page-head"><div><div class="eyebrow">${kicker}</div><h1>${title}</h1><p>${sub}</p></div>${action?`<div class="head-actions">${action}</div>`:""}</div>`}
 function stat(label,value,hint){return `<div class="stat"><div class="label">${label}</div><div class="value">${value}</div><div class="hint">${hint}</div></div>`}
-function renderView(){const extended=window.extendedViews?.[currentView];return extended?extended():({dashboard,programs,faculty:facultyView,matrix,research,papers,shortlist,applications,contacts,summer,calendar,sources,history,settings}[currentView]||dashboard)()}
+function renderView(){if(query.trim()&&window.renderGlobalSearch)return window.renderGlobalSearch(query.trim());const extended=window.extendedViews?.[currentView];return extended?extended():({dashboard,programs,faculty:facultyView,matrix,research,papers,shortlist,applications,contacts,summer,calendar,sources,history,settings}[currentView]||dashboard)()}
 
 function dashboard(){
   const high=state.faculty.filter(f=>bestScore(f.id)>=85).length, submitted=state.applications.filter(a=>a.status==="Submitted").length;
