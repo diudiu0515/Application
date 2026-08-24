@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-19T17:02:39.211348+00:00",
+  "generatedAt": "2026-08-24T05:09:32.109149+00:00",
   "schools": 50,
-  "candidates": 876,
+  "candidates": 128,
   "details": [
     {
       "school": "Massachusetts Institute of Technology",
-      "candidates": 15,
+      "candidates": 5,
       "errors": [
         "https://www.eecs.mit.edu/people/faculty/: HTTPError",
         "https://www.eecs.mit.edu/directory/: HTTPError"
@@ -13,7 +13,7 @@
     },
     {
       "school": "Stanford University",
-      "candidates": 70,
+      "candidates": 3,
       "errors": [
         "https://www.cs.stanford.edu/directory/: HTTPError"
       ]
@@ -22,6 +22,7 @@
       "school": "Carnegie Mellon University",
       "candidates": 0,
       "errors": [
+        "https://hcii.cmu.edu/people/faculty: URLError",
         "https://www.cs.cmu.edu/faculty/: HTTPError",
         "https://www.cs.cmu.edu/people/faculty/: HTTPError",
         "https://www.cs.cmu.edu/people/: HTTPError"
@@ -29,14 +30,14 @@
     },
     {
       "school": "University of California, Berkeley",
-      "candidates": 12,
+      "candidates": 0,
       "errors": [
         "https://eecs.berkeley.edu/directory/: HTTPError"
       ]
     },
     {
       "school": "University of Illinois Urbana-Champaign",
-      "candidates": 143,
+      "candidates": 20,
       "errors": [
         "https://siebelschool.illinois.edu/faculty/: HTTPError",
         "https://siebelschool.illinois.edu/directory/: HTTPError"
@@ -44,14 +45,14 @@
     },
     {
       "school": "Cornell University",
-      "candidates": 5,
+      "candidates": 2,
       "errors": [
         "https://www.cs.cornell.edu/faculty/: HTTPError"
       ]
     },
     {
       "school": "University of Washington",
-      "candidates": 38,
+      "candidates": 1,
       "errors": [
         "https://www.cs.washington.edu/faculty/: HTTPError",
         "https://www.cs.washington.edu/directory/: HTTPError"
@@ -59,7 +60,7 @@
     },
     {
       "school": "Georgia Institute of Technology",
-      "candidates": 2,
+      "candidates": 1,
       "errors": [
         "https://www.cc.gatech.edu/faculty/: HTTPError",
         "https://www.cc.gatech.edu/directory/: HTTPError"
@@ -67,7 +68,7 @@
     },
     {
       "school": "Princeton University",
-      "candidates": 29,
+      "candidates": 8,
       "errors": [
         "https://www.cs.princeton.edu/faculty/: HTTPError",
         "https://www.cs.princeton.edu/people/: HTTPError",
@@ -76,7 +77,7 @@
     },
     {
       "school": "University of Texas at Austin",
-      "candidates": 124,
+      "candidates": 9,
       "errors": [
         "https://www.cs.utexas.edu/faculty/: HTTPError",
         "https://www.cs.utexas.edu/people/faculty/: HTTPError",
@@ -109,7 +110,7 @@
     },
     {
       "school": "Columbia University",
-      "candidates": 10,
+      "candidates": 5,
       "errors": []
     },
     {
@@ -134,16 +135,15 @@
     },
     {
       "school": "University of Maryland, College Park",
-      "candidates": 47,
+      "candidates": 8,
       "errors": [
         "https://www.cs.umd.edu/directory/: HTTPError"
       ]
     },
     {
       "school": "Purdue University",
-      "candidates": 10,
+      "candidates": 7,
       "errors": [
-        "https://www.purdue.edu/home/faculty-staff/: RemoteDisconnected",
         "https://www.cs.purdue.edu/faculty/: HTTPError",
         "https://www.cs.purdue.edu/directory/: HTTPError"
       ]
@@ -152,6 +152,7 @@
       "school": "University of Massachusetts Amherst",
       "candidates": 0,
       "errors": [
+        "https://www.cics.umass.edu/people/faculty: HTTPError",
         "https://www.cics.umass.edu/faculty/: HTTPError",
         "https://www.cics.umass.edu/people/faculty/: HTTPError",
         "https://www.cics.umass.edu/directory/: HTTPError"
@@ -159,7 +160,7 @@
     },
     {
       "school": "University of Southern California",
-      "candidates": 0,
+      "candidates": 11,
       "errors": []
     },
     {
@@ -169,7 +170,7 @@
     },
     {
       "school": "Brown University",
-      "candidates": 6,
+      "candidates": 2,
       "errors": [
         "https://cs.brown.edu/faculty/: HTTPError",
         "https://cs.brown.edu/directory/: HTTPError"
@@ -177,14 +178,14 @@
     },
     {
       "school": "Johns Hopkins University",
-      "candidates": 82,
+      "candidates": 13,
       "errors": [
         "https://www.cs.jhu.edu/directory/: HTTPError"
       ]
     },
     {
       "school": "New York University",
-      "candidates": 6,
+      "candidates": 3,
       "errors": [
         "https://cs.nyu.edu/people/faculty/: HTTPError",
         "https://cs.nyu.edu/people/: HTTPError",
@@ -193,7 +194,7 @@
     },
     {
       "school": "Northwestern University",
-      "candidates": 88,
+      "candidates": 7,
       "errors": [
         "https://www.mccormick.northwestern.edu/computer-science/faculty/: HTTPError",
         "https://www.mccormick.northwestern.edu/computer-science/directory/: HTTPError"
@@ -201,7 +202,7 @@
     },
     {
       "school": "Duke University",
-      "candidates": 5,
+      "candidates": 1,
       "errors": [
         "https://cs.duke.edu/faculty/: HTTPError",
         "https://cs.duke.edu/directory/: HTTPError"
@@ -214,7 +215,7 @@
     },
     {
       "school": "University of California, Santa Barbara",
-      "candidates": 15,
+      "candidates": 6,
       "errors": [
         "https://www.cs.ucsb.edu/faculty/: HTTPError",
         "https://www.cs.ucsb.edu/people/: HTTPError",
@@ -254,6 +255,7 @@
       "school": "Pennsylvania State University",
       "candidates": 0,
       "errors": [
+        "https://www.eecs.psu.edu/departments/EECS-Departments-Computer-Science-Engineering-Faculty.aspx: HTTPError",
         "https://www.eecs.psu.edu/faculty/: HTTPError",
         "https://www.eecs.psu.edu/people/faculty/: HTTPError",
         "https://www.eecs.psu.edu/people/: HTTPError",
@@ -264,6 +266,7 @@
       "school": "Ohio State University",
       "candidates": 0,
       "errors": [
+        "https://cse.osu.edu/people/faculty: HTTPError",
         "https://cse.osu.edu/faculty/: HTTPError",
         "https://cse.osu.edu/people/faculty/: HTTPError"
       ]
@@ -296,7 +299,7 @@
     },
     {
       "school": "Virginia Tech",
-      "candidates": 5,
+      "candidates": 0,
       "errors": [
         "https://cs.vt.edu/faculty/: HTTPError",
         "https://cs.vt.edu/directory/: HTTPError"
@@ -304,7 +307,7 @@
     },
     {
       "school": "Northeastern University",
-      "candidates": 91,
+      "candidates": 5,
       "errors": [
         "https://www.khoury.northeastern.edu/people/faculty/: HTTPError",
         "https://www.khoury.northeastern.edu/directory/: HTTPError"
@@ -312,7 +315,7 @@
     },
     {
       "school": "University of Colorado Boulder",
-      "candidates": 1,
+      "candidates": 0,
       "errors": [
         "https://www.colorado.edu/cs/people/faculty/: HTTPError",
         "https://www.colorado.edu/cs/people/: HTTPError",
@@ -321,7 +324,7 @@
     },
     {
       "school": "Stony Brook University",
-      "candidates": 5,
+      "candidates": 6,
       "errors": [
         "https://www.cs.stonybrook.edu/faculty/: HTTPError",
         "https://www.cs.stonybrook.edu/people/faculty/: HTTPError",
@@ -353,6 +356,7 @@
       "school": "University of Arizona",
       "candidates": 0,
       "errors": [
+        "https://www.cs.arizona.edu/person/faculty: HTTPError",
         "https://www.cs.arizona.edu/faculty/: HTTPError",
         "https://www.cs.arizona.edu/directory/: HTTPError"
       ]
@@ -366,7 +370,7 @@
     },
     {
       "school": "Boston University",
-      "candidates": 64,
+      "candidates": 2,
       "errors": [
         "https://www.bu.edu/cs/directory/: HTTPError"
       ]
