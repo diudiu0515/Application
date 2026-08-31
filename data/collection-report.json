@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-24T05:09:32.109149+00:00",
+  "generatedAt": "2026-08-31T10:59:29.493939+00:00",
   "schools": 50,
   "candidates": 128,
   "details": [
     {
       "school": "Massachusetts Institute of Technology",
-      "candidates": 5,
+      "candidates": 4,
       "errors": [
         "https://www.eecs.mit.edu/people/faculty/: HTTPError",
         "https://www.eecs.mit.edu/directory/: HTTPError"
@@ -32,12 +32,13 @@
       "school": "University of California, Berkeley",
       "candidates": 0,
       "errors": [
+        "https://www2.eecs.berkeley.edu/Directories/directory-nostudents.html: URLError",
         "https://eecs.berkeley.edu/directory/: HTTPError"
       ]
     },
     {
       "school": "University of Illinois Urbana-Champaign",
-      "candidates": 20,
+      "candidates": 21,
       "errors": [
         "https://siebelschool.illinois.edu/faculty/: HTTPError",
         "https://siebelschool.illinois.edu/directory/: HTTPError"
@@ -131,7 +132,10 @@
     {
       "school": "University of Wisconsin-Madison",
       "candidates": 0,
-      "errors": []
+      "errors": [
+        "https://www.cs.wisc.edu/people/faculty/: HTTPError",
+        "https://www.cs.wisc.edu/directory/: HTTPError"
+      ]
     },
     {
       "school": "University of Maryland, College Park",
@@ -211,7 +215,10 @@
     {
       "school": "University of California, Irvine",
       "candidates": 0,
-      "errors": []
+      "errors": [
+        "https://ics.uci.edu/people/faculty/: HTTPError",
+        "https://ics.uci.edu/directory/: HTTPError"
+      ]
     },
     {
       "school": "University of California, Santa Barbara",
