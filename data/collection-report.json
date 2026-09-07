@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-31T10:59:29.493939+00:00",
+  "generatedAt": "2026-09-07T09:28:37.115455+00:00",
   "schools": 50,
-  "candidates": 128,
+  "candidates": 145,
   "details": [
     {
       "school": "Massachusetts Institute of Technology",
-      "candidates": 4,
+      "candidates": 5,
       "errors": [
         "https://www.eecs.mit.edu/people/faculty/: HTTPError",
         "https://www.eecs.mit.edu/directory/: HTTPError"
@@ -20,9 +20,8 @@
     },
     {
       "school": "Carnegie Mellon University",
-      "candidates": 0,
+      "candidates": 10,
       "errors": [
-        "https://hcii.cmu.edu/people/faculty: URLError",
         "https://www.cs.cmu.edu/faculty/: HTTPError",
         "https://www.cs.cmu.edu/people/faculty/: HTTPError",
         "https://www.cs.cmu.edu/people/: HTTPError"
@@ -32,13 +31,13 @@
       "school": "University of California, Berkeley",
       "candidates": 0,
       "errors": [
-        "https://www2.eecs.berkeley.edu/Directories/directory-nostudents.html: URLError",
+        "https://www2.eecs.berkeley.edu/Directories/directory-nostudents.html: HTTPError",
         "https://eecs.berkeley.edu/directory/: HTTPError"
       ]
     },
     {
       "school": "University of Illinois Urbana-Champaign",
-      "candidates": 21,
+      "candidates": 23,
       "errors": [
         "https://siebelschool.illinois.edu/faculty/: HTTPError",
         "https://siebelschool.illinois.edu/directory/: HTTPError"
@@ -215,14 +214,11 @@
     {
       "school": "University of California, Irvine",
       "candidates": 0,
-      "errors": [
-        "https://ics.uci.edu/people/faculty/: HTTPError",
-        "https://ics.uci.edu/directory/: HTTPError"
-      ]
+      "errors": []
     },
     {
       "school": "University of California, Santa Barbara",
-      "candidates": 6,
+      "candidates": 10,
       "errors": [
         "https://www.cs.ucsb.edu/faculty/: HTTPError",
         "https://www.cs.ucsb.edu/people/: HTTPError",
