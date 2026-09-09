@@ -1,6 +1,6 @@
 # Top 50 faculty discovery research
 
-> Snapshot: 2026-09-09 · 251 candidate faculty · 50/50 schools with at least one current or explicitly stale candidate set · 0 zero-result schools.
+> Snapshot: 2026-09-09 · 244 candidate faculty · 50/50 schools with at least one current or explicitly stale candidate set · 0 zero-result schools.
 
 ## Scope and interpretation
 
@@ -17,7 +17,7 @@ Every automated record enters `needs_review`. A record becomes a confirmed facul
 - Names are normalized and deduplicated per school. Navigation, UI labels, student-roster fallbacks and known section headings are rejected.
 - The scheduled collector runs weekly. Refreshes update discovery evidence but preserve the applicant’s review status, consideration, checklists, contact state, tags and decision rationale.
 
-Current family coverage is overlapping: `robotics_embodied` 149, `llm_reasoning` 77, `multimodal_vlm` 76, `benchmark_data` 71, `manual_primary_verification` 50, `spatial_interaction` 38, `affective_social` 25, `video_ego_exo` 21.
+Current family coverage is overlapping: `robotics_embodied` 144, `multimodal_vlm` 73, `llm_reasoning` 72, `benchmark_data` 67, `manual_primary_verification` 50, `spatial_interaction` 36, `affective_social` 25, `video_ego_exo` 21.
 
 ## GPA 3.3, school priority and summer research
 
@@ -35,7 +35,7 @@ Live, configured fallback and stale retained are reported separately. Stale rows
 |---:|---|---:|---:|---:|---:|---:|---|
 | 1 | Massachusetts Institute of Technology | 7 | 7 | 0 | 0 | 2 | [official page](https://www.eecs.mit.edu/) |
 | 2 | Stanford University | 3 | 3 | 0 | 0 | 1 | [official page](https://www.cs.stanford.edu/) |
-| 3 | Carnegie Mellon University | 11 | 0 | 0 | 11 | 5 | [official page](https://www.cs.cmu.edu/) |
+| 3 | Carnegie Mellon University | 11 | 11 | 0 | 0 | 3 | [official page](https://www.cs.cmu.edu/) |
 | 4 | University of California, Berkeley | 4 | 0 | 4 | 0 | 5 | [official page](https://eecs.berkeley.edu/) |
 | 5 | University of Illinois Urbana-Champaign | 28 | 28 | 0 | 0 | 2 | [official page](https://siebelschool.illinois.edu/) |
 | 6 | Cornell University | 5 | 3 | 2 | 0 | 1 | [official page](https://www.cs.cornell.edu/) |
@@ -46,10 +46,10 @@ Live, configured fallback and stale retained are reported separately. Stale rows
 | 11 | University of Michigan | 3 | 0 | 3 | 0 | 1 | [official page](https://cse.engin.umich.edu/) |
 | 12 | University of California, San Diego | 2 | 0 | 2 | 0 | 3 | [official page](https://cse.ucsd.edu/) |
 | 13 | University of California, Los Angeles | 3 | 1 | 2 | 0 | 2 | [official page](https://www.cs.ucla.edu/) |
-| 14 | Columbia University | 6 | 6 | 0 | 0 | 0 | [official page](https://www.cs.columbia.edu/) |
+| 14 | Columbia University | 5 | 5 | 0 | 0 | 0 | [official page](https://www.cs.columbia.edu/) |
 | 15 | Harvard University | 1 | 1 | 0 | 0 | 2 | [official page](https://seas.harvard.edu/computer-science) |
 | 16 | University of Pennsylvania | 3 | 1 | 2 | 0 | 1 | [official page](https://www.cis.upenn.edu/) |
-| 17 | University of Wisconsin-Madison | 8 | 7 | 1 | 0 | 2 | [official page](https://www.cs.wisc.edu/) |
+| 17 | University of Wisconsin-Madison | 2 | 1 | 1 | 0 | 1 | [official page](https://www.cs.wisc.edu/) |
 | 18 | University of Maryland, College Park | 10 | 10 | 0 | 0 | 1 | [official page](https://www.cs.umd.edu/) |
 | 19 | Purdue University | 7 | 7 | 0 | 0 | 2 | [official page](https://www.cs.purdue.edu/) |
 | 20 | University of Massachusetts Amherst | 1 | 0 | 1 | 0 | 4 | [official page](https://www.cics.umass.edu/) |
