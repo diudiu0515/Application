@@ -1,6 +1,6 @@
 {
   "Carnegie Mellon University": {"directories": ["https://www.ri.cmu.edu/people/all-ri-people/", "https://www.lti.cs.cmu.edu/people/index.html", "https://ml.cmu.edu/people/", "https://csd.cmu.edu/people/faculty", "https://hcii.cmu.edu/people/faculty"]},
-  "University of Michigan": {"directories": ["https://cse.engin.umich.edu/people/faculty/"]},
+  "University of Michigan": {"directories": ["https://cse.engin.umich.edu/people/faculty/"], "profiles": [["Jason Corso","https://cse.engin.umich.edu/stories/jason-corso-named-toyota-professor-of-artificial-intelligence"],["Chad Jenkins","https://cse.engin.umich.edu/stories/technology-that-serves-all-a-single-step-could-pave-the-way"],["Jeong Joon Park","https://cse.engin.umich.edu/stories/cse-welcomes-new-faculty-to-campus-for-the-23-24-academic-year"]]},
   "University of California, San Diego": {"directories": ["https://cse.ucsd.edu/people/faculty-profiles"]},
   "University of California, Los Angeles": {"directories": ["https://www.cs.ucla.edu/faculty/"]},
   "Harvard University": {"directories": ["https://seas.harvard.edu/computer-science/people"]},

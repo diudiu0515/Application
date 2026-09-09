@@ -100,6 +100,8 @@ def assess(args):
 
 def collect_school(entry,families):
     school,home=entry; profiles={}; errors=[]
+    for item in ADAPTERS.get(school,{}).get("profiles",[]):
+        if isinstance(item,list) and len(item)==2: profiles[item[1]]=item[0]
     try:
         for directory in directory_urls(home,school):
             try:
