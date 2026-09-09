@@ -17,6 +17,8 @@ class CollectorQualityTests(unittest.TestCase):
         self.assertEqual(collector.extract_name("Jesse Thomason Assistant Professor of Computer Science"), "Jesse Thomason")
         self.assertFalse(collector.name_like("Load More People"))
         self.assertFalse(collector.name_like("Research Institutes and Centers"))
+        for label in ("Home Page", "Personal Website", "PhD Advisors", "Machine Learning", "In Memoriam"):
+            self.assertIsNone(collector.extract_name(label), label)
 
     def test_primary_direction_gate_is_configured(self):
         config = json.loads((ROOT / "config/research-directions.json").read_text())

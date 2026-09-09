@@ -15,7 +15,7 @@ ROOT=Path(__file__).resolve().parents[1]
 UA="ApplicationIntelligenceBot/1.0 (+https://github.com/diudiu0515/Application)"
 HINTS=("faculty","people","directory","professor","academic-staff")
 BLOCK=("admission","student","alumni","staff","news","event","course","login","giving")
-NAME_BLOCK=("program","computer","science","research","committee","faculty","project","specialization","requirement","education","institute","center","university","school","department","about","online","load","more","people","advisory","expand","collapse","search")
+NAME_BLOCK=("program","computer","science","research","committee","faculty","project","specialization","requirement","education","institute","center","university","school","department","about","online","load","more","people","advisory","expand","collapse","search","home page","personal page","personal website","phd advisor","machine learning","in memoriam")
 PROFILE_HINTS=("/people/","/faculty/","/profile/","/profiles/","/directory/","/staff/","/~")
 URL_BLOCK=("admission","student","alumni","news","event","course","login","giving")
 ROLE_SUFFIX_RE=re.compile(r"\s+(?:(?:assistant|associate|adjunct|research|visiting|courtesy|emeritus|emerita|practice|clinical|teaching|part-time|senior|distinguished|wise|gabilan)\s+)*(?:professor|lecturer)\b.*$",re.I)
@@ -116,6 +116,12 @@ def emit(results,path):
     for school,home,found,_ in results:
         pid=sid("auto-pr-",school)
         programs.append({"id":pid,"school":school,"department":"Computer Science / related","program":"CS PhD","city":"","state":"","tier":"Research set","deadline":"2027-12-15","fee":0,"gre":"Needs verification","toefl":"Needs verification","funding":"Needs verification","model":"Needs verification","facultyCount":len(found),"priority":0,"status":"Researching","sourceId":sid("auto-src-",home)})
+        deduped={}
+        for c in found:
+            key=re.sub(r"[^a-z]","",c["name"].lower())
+            if key not in deduped or c["score"]>deduped[key]["score"]: deduped[key]=c
+        found=list(deduped.values())
+        programs[-1]["facultyCount"]=len(found)
         for c in found:
             faculty.append({"id":sid("auto-f-",school+"|"+c["name"]),"name":c["name"],"programId":pid,"position":"Faculty candidate","interests":c["keywords"],"recruiting":"unknown","consideration":"not_reviewed","contact":"not_planned","completion":20,"tsinghua":0,"lastChecked":now[:10],"email":"","website":c["url"],"why":"Official-page keyword match: "+", ".join(c["keywords"][:8]),"concerns":"Automated candidate only. Confirm advising eligibility, research and recruiting manually.","autoFamilies":c["families"],"discoveryScore":c["score"]})
             sources.append({"id":sid("auto-src-",c["url"]),"entity":c["name"],"name":"Official university/faculty page","url":c["url"],"type":"official_candidate","lastChecked":now[:10],"confidence":"medium","status":"unverified","claim":"Automated keyword discovery; human review required."})
