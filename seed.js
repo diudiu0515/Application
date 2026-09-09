@@ -4,7 +4,8 @@ window.SEED_DATA = {
     name: "Candidate", institution: "Tsinghua University", department: "Computer Science",
     degree: "B.S.", gpa: 3.3, cycle: "2028 Fall", target: "US CS / AI PhD · Multimodal + Robotics",
     focus: ["Multimodal AI", "Robotics / Embodied AI", "Video & Spatial Reasoning", "Benchmark & Data"],
-    statement: "Build reliable multimodal reasoning systems that track latent human state, perspective, and causality over time."
+    statement: "Build reliable multimodal reasoning systems that track latent human state, perspective, and causality over time.",
+    expectedGraduation: "2028-06", skills: ["Python","PyTorch","Benchmark design","Multimodal evaluation"], keywords: ["multimodal reasoning","robotics","embodied AI","video QA","affective computing"], educationNotes: "Tsinghua Computer Science undergraduate; add coursework and GPA context.", researchExperienceSummary: "Developing multimodal benchmark and spatial reasoning research with an emphasis on traceable evaluation."
   },
   projects: [
     { id:"p1", name:"EmoTree-Bench", short:"EmoTree", status:"active", area:"Longitudinal Emotion Reasoning", problem:"Can models track latent emotional states across branching interaction histories?", method:"Tree/DAG histories, counterfactual choices, causal evidence grounding, text and talking-head modalities.", contribution:"Benchmark design, task formulation, data pipeline and evaluation.", keywords:["emotion reasoning","affective computing","multimodal LLM","social reasoning","longitudinal reasoning","counterfactual reasoning","benchmark","emotion understanding","interactive agents"], updated:"2026-08-20" },
