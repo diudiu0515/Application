@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-09T16:03:15.915580+00:00",
+  "generatedAt": "2026-09-09T16:12:56.718450+00:00",
   "schools": 50,
-  "candidates": 251,
+  "candidates": 244,
   "coveredSchools": 50,
   "zeroSchools": 0,
   "details": [
@@ -28,13 +28,11 @@
       "rank": 3,
       "school": "Carnegie Mellon University",
       "candidates": 11,
-      "coverage": "stale_fallback",
+      "coverage": "covered",
       "errors": [
-        "https://hcii.cmu.edu/people/faculty: URLError",
         "https://www.cs.cmu.edu/faculty/: HTTPError",
         "https://www.cs.cmu.edu/people/faculty/: HTTPError",
-        "https://www.cs.cmu.edu/people/: HTTPError",
-        "Carnegie Mellon University: retained 11 previous candidates because all current discovery routes failed"
+        "https://www.cs.cmu.edu/people/: HTTPError"
       ]
     },
     {
@@ -144,7 +142,7 @@
     {
       "rank": 14,
       "school": "Columbia University",
-      "candidates": 6,
+      "candidates": 5,
       "coverage": "covered",
       "errors": []
     },
@@ -170,11 +168,10 @@
     {
       "rank": 17,
       "school": "University of Wisconsin-Madison",
-      "candidates": 8,
+      "candidates": 2,
       "coverage": "covered",
       "errors": [
-        "https://www.cs.wisc.edu/people/faculty/: HTTPError",
-        "https://www.cs.wisc.edu/directory/: HTTPError"
+        "https://www.cs.wisc.edu/: URLError"
       ]
     },
     {
