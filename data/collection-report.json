@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-09T14:42:22.010209+00:00",
+  "generatedAt": "2026-09-09T16:03:15.915580+00:00",
   "schools": 50,
-  "candidates": 250,
-  "coveredSchools": 50,
-  "zeroSchools": 0,
+  "candidates": 240,
+  "coveredSchools": 49,
+  "zeroSchools": 1,
   "details": [
     {
       "rank": 1,
@@ -27,9 +27,10 @@
     {
       "rank": 3,
       "school": "Carnegie Mellon University",
-      "candidates": 11,
-      "coverage": "covered",
+      "candidates": 0,
+      "coverage": "zero",
       "errors": [
+        "https://hcii.cmu.edu/people/faculty: URLError",
         "https://www.cs.cmu.edu/faculty/: HTTPError",
         "https://www.cs.cmu.edu/people/faculty/: HTTPError",
         "https://www.cs.cmu.edu/people/: HTTPError"
@@ -142,7 +143,7 @@
     {
       "rank": 14,
       "school": "Columbia University",
-      "candidates": 5,
+      "candidates": 6,
       "coverage": "covered",
       "errors": []
     },
