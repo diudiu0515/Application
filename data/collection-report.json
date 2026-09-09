@@ -1,9 +1,9 @@
 {
   "generatedAt": "2026-09-09T16:03:15.915580+00:00",
   "schools": 50,
-  "candidates": 240,
-  "coveredSchools": 49,
-  "zeroSchools": 1,
+  "candidates": 251,
+  "coveredSchools": 50,
+  "zeroSchools": 0,
   "details": [
     {
       "rank": 1,
@@ -27,13 +27,14 @@
     {
       "rank": 3,
       "school": "Carnegie Mellon University",
-      "candidates": 0,
-      "coverage": "zero",
+      "candidates": 11,
+      "coverage": "stale_fallback",
       "errors": [
         "https://hcii.cmu.edu/people/faculty: URLError",
         "https://www.cs.cmu.edu/faculty/: HTTPError",
         "https://www.cs.cmu.edu/people/faculty/: HTTPError",
-        "https://www.cs.cmu.edu/people/: HTTPError"
+        "https://www.cs.cmu.edu/people/: HTTPError",
+        "Carnegie Mellon University: retained 11 previous candidates because all current discovery routes failed"
       ]
     },
     {

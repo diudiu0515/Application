@@ -111,4 +111,24 @@ class CollectorQualityTests(unittest.TestCase):
         self.assertEqual(generic["mainlandApplicantSource"], "https://example.edu/cs")
         self.assertIn("never infer", generic["mainlandApplicantNotes"])
 
+    def test_failed_school_refresh_retains_previous_candidates_as_stale(self):
+        previous = {
+            "programs": [{"id": "p1", "school": "Example University"}],
+            "faculty": [{"id": "f1", "programId": "p1", "name": "Example Professor", "website": "https://example.edu/faculty/example", "interests": ["robot learning"], "autoFamilies": {"robotics_embodied": ["robot learning"]}, "discoveryScore": 82, "lastChecked": "2026-09-01"}],
+        }
+        failed = [("Example University", "https://example.edu/cs", [], ["directory: HTTPError"])]
+        retained = collector.retain_previous_on_failed_fetch(failed, previous)
+        candidate = retained[0][2][0]
+        self.assertEqual(candidate["collectionMode"], "stale_previous_snapshot")
+        self.assertEqual(candidate["lastChecked"], "2026-09-01")
+        with tempfile.TemporaryDirectory() as directory:
+            payload = collector.emit(retained, Path(directory) / "generated.js")
+        self.assertEqual(payload["report"]["zeroSchools"], 0)
+        self.assertEqual(payload["report"]["details"][0]["coverage"], "stale_fallback")
+        self.assertEqual(payload["faculty"][0]["lastChecked"], "2026-09-01")
+        source = next(x for x in payload["sources"] if x["entity"] == "Example Professor")
+        self.assertEqual(source["status"], "outdated")
+        healthy_empty = collector.retain_previous_on_failed_fetch([("Example University", "https://example.edu/cs", [], [])], previous)
+        self.assertEqual(healthy_empty[0][2], [])
+
 if __name__ == "__main__": unittest.main()

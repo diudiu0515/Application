@@ -129,6 +129,31 @@ def collect_school(entry,families):
             deduped[key]=candidate
     return school,home,list(deduped.values()),errors
 
+def load_existing_payload(path):
+    try:
+        raw=path.read_text(encoding="utf-8")
+        return json.loads(raw.split("window.AUTO_DATA=",1)[1].rsplit(";",1)[0])
+    except (OSError, ValueError, IndexError, KeyError):
+        return {"programs":[],"faculty":[]}
+
+def retain_previous_on_failed_fetch(results,previous):
+    program_by_school={p.get("school"):p.get("id") for p in previous.get("programs",[])}
+    faculty_by_program={}
+    for row in previous.get("faculty",[]):
+        faculty_by_program.setdefault(row.get("programId"),[]).append(row)
+    retained=[]
+    for school,home,found,errors in results:
+        if found or not errors:
+            retained.append((school,home,found,errors))
+            continue
+        old=faculty_by_program.get(program_by_school.get(school),[])
+        stale=[{"school":school,"name":x["name"],"url":x.get("website",""),"families":x.get("autoFamilies",{}),"keywords":x.get("interests",[]),"score":x.get("discoveryScore",40),"collectionMode":"stale_previous_snapshot","lastChecked":x.get("lastChecked","")} for x in old if x.get("name") and x.get("website")]
+        if stale:
+            errors=list(errors)+[f"{school}: retained {len(stale)} previous candidates because all current discovery routes failed"]
+            found=stale
+        retained.append((school,home,found,errors))
+    return retained
+
 def emit(results,path):
     now=datetime.now(timezone.utc).isoformat(); programs=[]; faculty=[]; sources=[]
     applicant_config=json.loads((ROOT/"config/applicant-context.json").read_text())
@@ -153,15 +178,17 @@ def emit(results,path):
         found=list(deduped.values())
         programs[-1]["facultyCount"]=len(found)
         for c in found:
-            faculty.append({"id":sid("auto-f-",school+"|"+c["name"]),"name":c["name"],"programId":pid,"position":"Faculty candidate","interests":c["keywords"],"recruiting":"unknown","consideration":"not_reviewed","contact":"not_planned","completion":20,"tsinghua":0,"lastChecked":now[:10],"email":"","website":c["url"],"why":("Official research roster candidate: " if c.get("collectionMode")=="official_roster_fallback" else "Official-page keyword match: ")+", ".join(c["keywords"][:8]),"concerns":"Automated candidate only. Confirm advising eligibility, research and recruiting manually.","autoFamilies":c["families"],"discoveryScore":c["score"],"reviewStatus":"needs_review","discoveryActive":True,"collectionMode":c.get("collectionMode","official_directory_profile_keyword_match"),"roleBasis":"Profile link discovered from configured official university/department source."})
-            sources.append({"id":sid("auto-src-",c["url"]),"entity":c["name"],"name":"Official university/faculty page","url":c["url"],"type":"official_candidate","lastChecked":now[:10],"confidence":"medium","status":"unverified","claim":"Automated keyword discovery; human review required."})
-    details=[{"rank":i,"school":school,"candidates":len(found),"coverage":"covered" if found else "zero","errors":errors} for i,(school,_,found,errors) in enumerate(results,1)]
+            faculty.append({"id":sid("auto-f-",school+"|"+c["name"]),"name":c["name"],"programId":pid,"position":"Faculty candidate","interests":c["keywords"],"recruiting":"unknown","consideration":"not_reviewed","contact":"not_planned","completion":20,"tsinghua":0,"lastChecked":c.get("lastChecked") or now[:10],"email":"","website":c["url"],"why":("Stale snapshot retained after fetch failure: " if c.get("collectionMode")=="stale_previous_snapshot" else "Official research roster candidate: " if c.get("collectionMode")=="official_roster_fallback" else "Official-page keyword match: ")+", ".join(c["keywords"][:8]),"concerns":"Automated candidate only. Confirm advising eligibility, research and recruiting manually.","autoFamilies":c["families"],"discoveryScore":c["score"],"reviewStatus":"needs_review","discoveryActive":True,"collectionMode":c.get("collectionMode","official_directory_profile_keyword_match"),"roleBasis":"Profile link discovered from configured official university/department source."})
+            sources.append({"id":sid("auto-src-",c["url"]),"entity":c["name"],"name":"Official university/faculty page","url":c["url"],"type":"official_candidate","lastChecked":c.get("lastChecked") or now[:10],"confidence":"low" if c.get("collectionMode")=="stale_previous_snapshot" else "medium","status":"outdated" if c.get("collectionMode")=="stale_previous_snapshot" else "unverified","claim":"Previous candidate retained because current official discovery routes failed; recheck required." if c.get("collectionMode")=="stale_previous_snapshot" else "Automated keyword discovery; human review required."})
+    details=[{"rank":i,"school":school,"candidates":len(found),"coverage":"stale_fallback" if found and all(x.get("collectionMode")=="stale_previous_snapshot" for x in found) else "covered" if found else "zero","errors":errors} for i,(school,_,found,errors) in enumerate(results,1)]
     payload={"generatedAt":now,"programs":programs,"faculty":faculty,"sources":sources,"report":{"schools":len(results),"candidates":len(faculty),"coveredSchools":sum(1 for row in details if row["candidates"]),"zeroSchools":sum(1 for row in details if not row["candidates"]),"details":details}}
     path.parent.mkdir(parents=True,exist_ok=True)
     path.write_text("// Generated candidate evidence; human verification required.\nwindow.AUTO_DATA="+json.dumps(payload,ensure_ascii=False,separators=(",",":"))+";\n",encoding="utf-8")
     return payload
 
 def main():
+    output_path=ROOT/"data/generated-faculty.js"
+    previous=load_existing_payload(output_path)
     ap=argparse.ArgumentParser(); ap.add_argument("--limit-schools",type=int); ap.add_argument("--school"); ap.add_argument("--workers",type=int,default=4); args=ap.parse_args()
     targets=json.loads((ROOT/"config/top50-programs.json").read_text())["programs"]
     if args.school: targets=[x for x in targets if args.school.lower() in x[0].lower()]
@@ -173,7 +200,8 @@ def main():
         for i,result in enumerate(pool.map(lambda item: collect_school(item,families),targets),1):
             results.append(result)
             print(f"[{i}/{len(targets)}] {result[0]} candidates={len(result[2])} errors={len(result[3])}",flush=True)
-    payload=emit(results,ROOT/"data/generated-faculty.js")
+    results=retain_previous_on_failed_fetch(results,previous)
+    payload=emit(results,output_path)
     report={"generatedAt":payload["generatedAt"],**payload["report"]}
     (ROOT/"data/collection-report.json").write_text(json.dumps(report,indent=2),encoding="utf-8")
     print(json.dumps(payload["report"]))

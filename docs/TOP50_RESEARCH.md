@@ -1,6 +1,6 @@
 # Top 50 faculty discovery research
 
-> Snapshot: 2026-09-09 · 250 candidate faculty · 50/50 schools with at least one candidate · 0 zero-result schools.
+> Snapshot: 2026-09-09 · 251 candidate faculty · 50/50 schools with at least one current or explicitly stale candidate set · 0 zero-result schools.
 
 ## Scope and interpretation
 
@@ -13,10 +13,11 @@ Every automated record enters `needs_review`. A record becomes a confirmed facul
 - Sources are configured university, department, research-area, faculty, lab and official profile pages.
 - A live profile must contain a faculty-role signal and a primary multimodal or robotics/embodied direction. A single generic word such as “robotics” is insufficient; one precise primary phrase or at least two direction signals are required.
 - If a profile cannot be fetched, fallback is allowed only for a professor and official URL explicitly listed in the adapter configuration. A research roster alone is never promoted because it may include students, staff or section headings.
+- If every current discovery route for a school fails, the prior candidate set is retained with `stale_previous_snapshot` mode and outdated/low-confidence source status. It remains visible for review but is never represented as a successful current fetch.
 - Names are normalized and deduplicated per school. Navigation, UI labels, student-roster fallbacks and known section headings are rejected.
 - The scheduled collector runs weekly. Refreshes update discovery evidence but preserve the applicant’s review status, consideration, checklists, contact state, tags and decision rationale.
 
-Current family coverage is overlapping: `robotics_embodied` 148, `llm_reasoning` 77, `multimodal_vlm` 76, `benchmark_data` 70, `manual_primary_verification` 50, `spatial_interaction` 38, `affective_social` 25, `video_ego_exo` 21.
+Current family coverage is overlapping: `robotics_embodied` 149, `llm_reasoning` 77, `multimodal_vlm` 76, `benchmark_data` 71, `manual_primary_verification` 50, `spatial_interaction` 38, `affective_social` 25, `video_ego_exo` 21.
 
 ## GPA 3.3, school priority and summer research
 
@@ -28,61 +29,60 @@ The editable shortlist then emphasizes verified faculty fit and advisor depth. A
 
 ## Per-school audit
 
-“Live / fallback” distinguishes successful role-and-keyword profile matches from individually configured official-profile fallbacks. The link in every row is the configured official research entry used for recurring discovery.
+Live, configured fallback and stale retained are reported separately. Stale rows come only from the previous snapshot after all current discovery routes failed, and their source status is downgraded. The link in every row is the configured official research entry used for recurring discovery.
 
-| Set rank | School | Candidates | Live / fallback | Fetch errors | Official research entry |
-|---:|---|---:|---:|---:|---|
-| 1 | Massachusetts Institute of Technology | 7 | 7 / 0 | 2 | [official page](https://www.eecs.mit.edu/role/faculty/?fwp_research=robotics) |
-| 2 | Stanford University | 3 | 3 / 0 | 1 | [official page](https://www.cs.stanford.edu/people-cs/faculty-research/robotics) |
-| 3 | Carnegie Mellon University | 11 | 11 / 0 | 3 | [official page](https://www.ri.cmu.edu/people/all-ri-people/) |
-| 4 | University of California, Berkeley | 4 | 0 / 4 | 5 | [official page](https://www2.eecs.berkeley.edu/Faculty/Lists/faculty.html) |
-| 5 | University of Illinois Urbana-Champaign | 28 | 28 / 0 | 2 | [official page](https://cs.illinois.edu/research/areas/artificial-intelligence) |
-| 6 | Cornell University | 5 | 3 / 2 | 1 | [official page](https://www.cs.cornell.edu/people/faculty) |
-| 7 | University of Washington | 1 | 0 / 1 | 2 | [official page](https://www.cs.washington.edu/research/artificial-intelligence/ai-faculty-members/) |
-| 8 | Georgia Institute of Technology | 1 | 1 / 0 | 2 | [official page](https://www.cc.gatech.edu/people/faculty) |
-| 9 | Princeton University | 9 | 9 / 0 | 3 | [official page](https://www.cs.princeton.edu/research/areas/robotics) |
-| 10 | University of Texas at Austin | 11 | 10 / 1 | 3 | [official page](https://www.cs.utexas.edu/research/computer-vision) |
-| 11 | University of Michigan | 3 | 0 / 3 | 1 | [official page](https://cse.engin.umich.edu/people/faculty/) |
-| 12 | University of California, San Diego | 2 | 0 / 2 | 3 | [official page](https://cse.ucsd.edu/people/faculty-profiles) |
-| 13 | University of California, Los Angeles | 3 | 1 / 2 | 2 | [official page](https://www.cs.ucla.edu/faculty/) |
-| 14 | Columbia University | 5 | 5 / 0 | 0 | [official page](https://www.cs.columbia.edu/people/faculty/) |
-| 15 | Harvard University | 1 | 1 / 0 | 2 | [official page](https://seas.harvard.edu/computer-science/people) |
-| 16 | University of Pennsylvania | 3 | 1 / 2 | 1 | [official page](https://www.cis.upenn.edu/people/faculty/) |
-| 17 | University of Wisconsin-Madison | 8 | 7 / 1 | 2 | [official page](https://www.cs.wisc.edu/people/faculty-2/) |
-| 18 | University of Maryland, College Park | 10 | 10 / 0 | 1 | [official page](https://www.cs.umd.edu/people/faculty) |
-| 19 | Purdue University | 7 | 7 / 0 | 2 | [official page](https://www.cs.purdue.edu/research/robotics-computer-vision.html) |
-| 20 | University of Massachusetts Amherst | 1 | 0 / 1 | 4 | [official page](https://www.cics.umass.edu/people/faculty) |
-| 21 | University of Southern California | 12 | 12 / 0 | 0 | [official page](https://www.cs.usc.edu/directory/faculty/) |
-| 22 | Yale University | 2 | 2 / 0 | 0 | [official page](https://engineering.yale.edu/research-and-faculty/faculty-directory) |
-| 23 | Brown University | 3 | 0 / 3 | 2 | [official page](https://cs.brown.edu/people/faculty/) |
-| 24 | Johns Hopkins University | 14 | 14 / 0 | 1 | [official page](https://www.cs.jhu.edu/research/computer-vision/) |
-| 25 | New York University | 1 | 1 / 0 | 3 | [official page](https://cs.nyu.edu/dynamic/people/faculty/) |
-| 26 | Northwestern University | 8 | 8 / 0 | 2 | [official page](https://www.mccormick.northwestern.edu/computer-science/research/areas/robotics.html) |
-| 27 | Duke University | 7 | 3 / 4 | 2 | [official page](https://cs.duke.edu/research/computer-vision) |
-| 28 | University of California, Irvine | 3 | 2 / 1 | 0 | [official page](https://ics.uci.edu/people/) |
-| 29 | University of California, Santa Barbara | 7 | 7 / 0 | 3 | [official page](https://cs.ucsb.edu/research) |
-| 30 | University of North Carolina at Chapel Hill | 3 | 3 / 0 | 1 | [official page](https://cs.unc.edu/people/faculty/) |
-| 31 | Rice University | 3 | 2 / 1 | 1 | [official page](https://csweb.rice.edu/people/faculty) |
-| 32 | University of Chicago | 3 | 1 / 2 | 2 | [official page](https://cs.uchicago.edu/people/faculty/) |
-| 33 | University of Virginia | 2 | 0 / 2 | 1 | [official page](https://engineering.virginia.edu/department/computer-science/people) |
-| 34 | Pennsylvania State University | 3 | 2 / 1 | 5 | [official page](https://www.eecs.psu.edu/departments/EECS-Departments-Computer-Science-Engineering-Faculty.aspx) |
-| 35 | Ohio State University | 1 | 0 / 1 | 3 | [official page](https://cse.osu.edu/people/faculty) |
-| 36 | Rutgers University | 3 | 0 / 3 | 1 | [official page](https://www.cs.rutgers.edu/people/professors) |
-| 37 | Texas A&M University | 2 | 1 / 1 | 4 | [official page](https://engineering.tamu.edu/cse/profiles/index.html) |
-| 38 | University of Minnesota | 4 | 3 / 1 | 3 | [official page](https://cse.umn.edu/cs/faculty) |
-| 39 | Virginia Tech | 3 | 2 / 1 | 2 | [official page](https://cs.vt.edu/people/faculty.html) |
-| 40 | Northeastern University | 19 | 19 / 0 | 2 | [official page](https://www.khoury.northeastern.edu/research_areas/robotics/) |
-| 41 | University of Colorado Boulder | 2 | 0 / 2 | 3 | [official page](https://www.colorado.edu/cs/research/robotics) |
-| 42 | Stony Brook University | 6 | 6 / 0 | 3 | [official page](https://www.cs.stonybrook.edu/people/faculty) |
-| 43 | University of California, Davis | 1 | 1 / 0 | 1 | [official page](https://cs.ucdavis.edu/people/faculty) |
-| 44 | University of Utah | 1 | 1 / 0 | 1 | [official page](https://www.cs.utah.edu/people/faculty/) |
-| 45 | Washington University in St. Louis | 3 | 1 / 2 | 1 | [official page](https://engineering.washu.edu/faculty/) |
-| 46 | University of Arizona | 2 | 0 / 2 | 3 | [official page](https://www.cs.arizona.edu/person/faculty) |
-| 47 | University of California, Santa Cruz | 2 | 2 / 0 | 1 | [official page](https://engineering.ucsc.edu/departments/computer-science-and-engineering/faculty/) |
-| 48 | Boston University | 3 | 2 / 1 | 1 | [official page](https://www.bu.edu/cs/research-groups/ml/) |
-| 49 | Arizona State University | 2 | 1 / 1 | 1 | [official page](https://scai.engineering.asu.edu/faculty/) |
-| 50 | University of Rochester | 2 | 0 / 2 | 1 | [official page](https://www.cs.rochester.edu/people/faculty/index.html) |
-
+| Set rank | School | Candidates | Live | Configured fallback | Stale retained | Fetch errors | Official research entry |
+|---:|---|---:|---:|---:|---:|---:|---|
+| 1 | Massachusetts Institute of Technology | 7 | 7 | 0 | 0 | 2 | [official page](https://www.eecs.mit.edu/) |
+| 2 | Stanford University | 3 | 3 | 0 | 0 | 1 | [official page](https://www.cs.stanford.edu/) |
+| 3 | Carnegie Mellon University | 11 | 0 | 0 | 11 | 5 | [official page](https://www.cs.cmu.edu/) |
+| 4 | University of California, Berkeley | 4 | 0 | 4 | 0 | 5 | [official page](https://eecs.berkeley.edu/) |
+| 5 | University of Illinois Urbana-Champaign | 28 | 28 | 0 | 0 | 2 | [official page](https://siebelschool.illinois.edu/) |
+| 6 | Cornell University | 5 | 3 | 2 | 0 | 1 | [official page](https://www.cs.cornell.edu/) |
+| 7 | University of Washington | 1 | 0 | 1 | 0 | 2 | [official page](https://www.cs.washington.edu/) |
+| 8 | Georgia Institute of Technology | 1 | 1 | 0 | 0 | 2 | [official page](https://www.cc.gatech.edu/) |
+| 9 | Princeton University | 9 | 9 | 0 | 0 | 3 | [official page](https://www.cs.princeton.edu/) |
+| 10 | University of Texas at Austin | 11 | 10 | 1 | 0 | 3 | [official page](https://www.cs.utexas.edu/) |
+| 11 | University of Michigan | 3 | 0 | 3 | 0 | 1 | [official page](https://cse.engin.umich.edu/) |
+| 12 | University of California, San Diego | 2 | 0 | 2 | 0 | 3 | [official page](https://cse.ucsd.edu/) |
+| 13 | University of California, Los Angeles | 3 | 1 | 2 | 0 | 2 | [official page](https://www.cs.ucla.edu/) |
+| 14 | Columbia University | 6 | 6 | 0 | 0 | 0 | [official page](https://www.cs.columbia.edu/) |
+| 15 | Harvard University | 1 | 1 | 0 | 0 | 2 | [official page](https://seas.harvard.edu/computer-science) |
+| 16 | University of Pennsylvania | 3 | 1 | 2 | 0 | 1 | [official page](https://www.cis.upenn.edu/) |
+| 17 | University of Wisconsin-Madison | 8 | 7 | 1 | 0 | 2 | [official page](https://www.cs.wisc.edu/) |
+| 18 | University of Maryland, College Park | 10 | 10 | 0 | 0 | 1 | [official page](https://www.cs.umd.edu/) |
+| 19 | Purdue University | 7 | 7 | 0 | 0 | 2 | [official page](https://www.cs.purdue.edu/) |
+| 20 | University of Massachusetts Amherst | 1 | 0 | 1 | 0 | 4 | [official page](https://www.cics.umass.edu/) |
+| 21 | University of Southern California | 12 | 12 | 0 | 0 | 0 | [official page](https://www.cs.usc.edu/) |
+| 22 | Yale University | 2 | 2 | 0 | 0 | 0 | [official page](https://cpsc.yale.edu/) |
+| 23 | Brown University | 3 | 0 | 3 | 0 | 2 | [official page](https://cs.brown.edu/) |
+| 24 | Johns Hopkins University | 14 | 14 | 0 | 0 | 1 | [official page](https://www.cs.jhu.edu/) |
+| 25 | New York University | 1 | 1 | 0 | 0 | 3 | [official page](https://cs.nyu.edu/) |
+| 26 | Northwestern University | 8 | 8 | 0 | 0 | 2 | [official page](https://www.mccormick.northwestern.edu/computer-science/) |
+| 27 | Duke University | 7 | 3 | 4 | 0 | 2 | [official page](https://cs.duke.edu/) |
+| 28 | University of California, Irvine | 3 | 2 | 1 | 0 | 0 | [official page](https://ics.uci.edu/) |
+| 29 | University of California, Santa Barbara | 7 | 7 | 0 | 0 | 3 | [official page](https://www.cs.ucsb.edu/) |
+| 30 | University of North Carolina at Chapel Hill | 3 | 3 | 0 | 0 | 1 | [official page](https://cs.unc.edu/) |
+| 31 | Rice University | 3 | 2 | 1 | 0 | 1 | [official page](https://csweb.rice.edu/) |
+| 32 | University of Chicago | 3 | 1 | 2 | 0 | 2 | [official page](https://cs.uchicago.edu/) |
+| 33 | University of Virginia | 2 | 0 | 2 | 0 | 1 | [official page](https://engineering.virginia.edu/department/computer-science) |
+| 34 | Pennsylvania State University | 3 | 2 | 1 | 0 | 5 | [official page](https://www.eecs.psu.edu/) |
+| 35 | Ohio State University | 1 | 0 | 1 | 0 | 3 | [official page](https://cse.osu.edu/) |
+| 36 | Rutgers University | 3 | 0 | 3 | 0 | 1 | [official page](https://www.cs.rutgers.edu/) |
+| 37 | Texas A&M University | 2 | 1 | 1 | 0 | 4 | [official page](https://engineering.tamu.edu/cse/) |
+| 38 | University of Minnesota | 4 | 3 | 1 | 0 | 3 | [official page](https://cse.umn.edu/cs) |
+| 39 | Virginia Tech | 3 | 2 | 1 | 0 | 2 | [official page](https://cs.vt.edu/) |
+| 40 | Northeastern University | 19 | 19 | 0 | 0 | 2 | [official page](https://www.khoury.northeastern.edu/) |
+| 41 | University of Colorado Boulder | 2 | 0 | 2 | 0 | 3 | [official page](https://www.colorado.edu/cs/) |
+| 42 | Stony Brook University | 6 | 6 | 0 | 0 | 3 | [official page](https://www.cs.stonybrook.edu/) |
+| 43 | University of California, Davis | 1 | 1 | 0 | 0 | 1 | [official page](https://cs.ucdavis.edu/) |
+| 44 | University of Utah | 1 | 1 | 0 | 0 | 1 | [official page](https://www.cs.utah.edu/) |
+| 45 | Washington University in St. Louis | 3 | 1 | 2 | 0 | 1 | [official page](https://engineering.wustl.edu/academics/programs/computer-science-engineering/) |
+| 46 | University of Arizona | 2 | 0 | 2 | 0 | 3 | [official page](https://www.cs.arizona.edu/) |
+| 47 | University of California, Santa Cruz | 2 | 2 | 0 | 0 | 1 | [official page](https://engineering.ucsc.edu/departments/computer-science-and-engineering/) |
+| 48 | Boston University | 3 | 2 | 1 | 0 | 1 | [official page](https://www.bu.edu/cs/) |
+| 49 | Arizona State University | 2 | 1 | 1 | 0 | 1 | [official page](https://scai.engineering.asu.edu/) |
+| 50 | University of Rochester | 2 | 0 | 2 | 0 | 1 | [official page](https://www.cs.rochester.edu/department/) |
 ## Acceptance gates
 
 - exactly 50 unique programs and 50 unique per-school audit rows;
