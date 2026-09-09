@@ -148,6 +148,13 @@ model Program {
   funding Json?
   admissionModel String?
   programMetrics Json?
+  mainlandApplicantStatus String?
+  mainlandApplicantNotes String?
+  mainlandApplicantSource String?
+  mainlandLastChecked DateTime?
+  mainlandVerification String?
+  internationalApplicationRoute String?
+  applicantContextOverride Boolean @default(false)
   faculty Faculty[]
   applications Application[]
   rankings Ranking[]
@@ -226,6 +233,10 @@ model LabMember {
   education Json?
   isTsinghuaAlumni Boolean?
   tsinghuaDetails Json?
+  mainlandChinaBackground Boolean?
+  mainlandInstitution String?
+  mainlandEvidenceStatus String?
+  mainlandSourceUrl String?
   publicContacts Json?
   sourceUrl String?
   sourceType String?

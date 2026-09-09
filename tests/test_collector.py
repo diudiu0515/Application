@@ -96,4 +96,19 @@ class CollectorQualityTests(unittest.TestCase):
         self.assertIn("GPA 3.3", second["gpaContext"])
         self.assertIn("65%", second["selectionBasis"])
 
+    def test_emit_adds_mainland_applicant_context_without_claiming_nationality(self):
+        results = [
+            ("Massachusetts Institute of Technology", "https://www.eecs.mit.edu/", [], []),
+            ("Example University", "https://example.edu/cs", [], []),
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            payload = collector.emit(results, Path(directory) / "generated.js")
+        mit, generic = payload["programs"]
+        self.assertEqual(mit["mainlandApplicantStatus"], "international_applicants_supported")
+        self.assertEqual(mit["mainlandVerification"], "official_current_general_policy")
+        self.assertIn("not a guarantee", mit["mainlandApplicantNotes"])
+        self.assertEqual(generic["mainlandApplicantStatus"], "needs_2028_official_check")
+        self.assertEqual(generic["mainlandApplicantSource"], "https://example.edu/cs")
+        self.assertIn("never infer", generic["mainlandApplicantNotes"])
+
 if __name__ == "__main__": unittest.main()

@@ -35,6 +35,10 @@ This is a deliberate static/local-first deployment on GitHub Pages. `prisma/sche
 
 A high-impact value (deadline, requirement, funding or recruiting) is confirmed only by a dated official field observation. Community claims never overwrite official fields. Conflicting active observations remain visible. Public contact data must retain a source; private contact details are never inferred.
 
+Mainland-China applicant evidence is split into three independent layers: program-level international eligibility, faculty-level recruiting evidence, and publicly sourced lab-member education/background records. A general international admissions policy never becomes a faculty recruiting promise. Names are never used to infer nationality or origin. Missing records mean "not yet curated", not "no mainland students" or "not recruiting".
+
+Summer research records keep academic fit separate from executable eligibility. Formal programs, direct-lab inquiries and home-institution research are separate routes; each record stores the cycle, official source, checked date, funding/mode, application route and next-cycle recheck state. User-edited applicant and summer records are preserved across automatic data refreshes.
+
 ## Faculty discovery and decisions
 
 The collector scans the configured Top 50 official entry points and emits direction-related `needs_review` candidates. Live page keyword matches and conservative official-roster fallbacks are distinguishable. Per-school zero results and fetch errors are part of the product UI and report.

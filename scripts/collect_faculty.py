@@ -131,6 +131,9 @@ def collect_school(entry,families):
 
 def emit(results,path):
     now=datetime.now(timezone.utc).isoformat(); programs=[]; faculty=[]; sources=[]
+    applicant_config=json.loads((ROOT/"config/applicant-context.json").read_text())
+    default_applicant=applicant_config.get("default",{})
+    school_applicants=applicant_config.get("schools",{})
     for rank,(school,home,found,_) in enumerate(results,1):
         pid=sid("auto-pr-",school)
         reputation=max(35,round(101-rank*1.2))
@@ -138,7 +141,10 @@ def emit(results,path):
         gpa_viability=min(88,30+rank*1.15)
         initial_priority=round(reputation*.20+direction_depth*.65+gpa_viability*.15)
         tier="Dream" if rank<=8 else "Reach" if rank<=22 else "Target" if rank<=38 else "Lower Risk"
-        programs.append({"id":pid,"school":school,"department":"Computer Science / related","program":"CS PhD","degree":"PhD","country":"United States","city":"","state":"","tier":tier,"applicationCycle":"2028 Fall","deadline":"2027-12-15","deadlineStatus":"planning_placeholder_needs_official_2028_recheck","fee":0,"gre":"Needs verification","toefl":"Needs verification","ielts":"Needs verification","funding":"Needs verification","model":"Needs verification","facultyCount":len(found),"priority":initial_priority,"status":"Researching","sourceId":sid("auto-src-",home),"rankingCustom":rank,"rankingYear":2026,"rankingSource":"User-defined Top 50 research set order; not an official ranking","admissionRisk":"extremely_high" if rank<=10 else "very_high" if rank<=30 else "high","gpaContext":"GPA 3.3: emphasize research output, advisor fit, references, and maintain portfolio breadth.","selectionBasis":"Initial priority weights discovered multimodal/robotics faculty depth 65%, custom rank proxy 20%, and GPA 3.3 portfolio viability 15%; human verification required."})
+        applicant={**default_applicant,**school_applicants.get(school,{})}
+        if not applicant.get("mainlandApplicantSource"):
+            applicant["mainlandApplicantSource"]=home
+        programs.append({"id":pid,"school":school,"department":"Computer Science / related","program":"CS PhD","degree":"PhD","country":"United States","city":"","state":"","tier":tier,"applicationCycle":"2028 Fall","deadline":"2027-12-15","deadlineStatus":"planning_placeholder_needs_official_2028_recheck","fee":0,"gre":"Needs verification","toefl":"Needs verification","ielts":"Needs verification","funding":"Needs verification","model":"Needs verification","facultyCount":len(found),"priority":initial_priority,"status":"Researching","sourceId":sid("auto-src-",home),"rankingCustom":rank,"rankingYear":2026,"rankingSource":"User-defined Top 50 research set order; not an official ranking","admissionRisk":"extremely_high" if rank<=10 else "very_high" if rank<=30 else "high","gpaContext":"GPA 3.3: emphasize research output, advisor fit, references, and maintain portfolio breadth.","selectionBasis":"Initial priority weights discovered multimodal/robotics faculty depth 65%, custom rank proxy 20%, and GPA 3.3 portfolio viability 15%; human verification required.",**applicant})
         sources.append({"id":sid("auto-src-",home),"entity":school,"name":"Official CS department / faculty entry point","url":home,"type":"official_department","lastChecked":now[:10],"confidence":"high","status":"official_source_unverified_fields","claim":"Official entry point for recurring faculty discovery; individual 2028 program fields still require verification."})
         deduped={}
         for c in found:

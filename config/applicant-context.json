@@ -1,0 +1,28 @@
+{
+  "default": {
+    "mainlandApplicantStatus": "needs_2028_official_check",
+    "mainlandApplicantNotes": "No nationality-specific faculty acceptance policy is established by the configured source. Apply through the international-applicant route only after the official Fall 2028 policy is published; never infer willingness from names or lab-member backgrounds.",
+    "mainlandApplicantSource": "",
+    "mainlandLastChecked": "2026-09-09",
+    "mainlandVerification": "unverified",
+    "internationalApplicationRoute": "Department or graduate-school PhD application; Fall 2028 rules need official verification."
+  },
+  "schools": {
+    "Massachusetts Institute of Technology": {
+      "mainlandApplicantStatus": "international_applicants_supported",
+      "mainlandApplicantNotes": "MIT EECS publishes an international-student application and funding route. Its information letter says admitted international students may hold research assistantships with stipend and full tuition, and it does not publish a minimum GPA cutoff. This is general international policy, not a guarantee for applicants from mainland China or for Fall 2028.",
+      "mainlandApplicantSource": "https://www.eecs.mit.edu/graduate-admissions-information-letter/",
+      "mainlandLastChecked": "2026-09-09",
+      "mainlandVerification": "official_current_general_policy",
+      "internationalApplicationRoute": "Apply through MIT EECS graduate admissions; verify Fall 2028 English-test, deadline and funding language when that cycle opens."
+    },
+    "Carnegie Mellon University": {
+      "mainlandApplicantStatus": "international_applicants_supported",
+      "mainlandApplicantNotes": "CMU CSD publishes the same basic admitted-PhD funding commitment for domestic and international students and a separate English-language requirement. This is general international policy, not a faculty-level promise or a Fall 2028 confirmation.",
+      "mainlandApplicantSource": "https://csd.cs.cmu.edu/academics/doctoral/admissions",
+      "mainlandLastChecked": "2026-09-09",
+      "mainlandVerification": "official_current_general_policy",
+      "internationalApplicationRoute": "Apply to the relevant CMU doctoral program; verify Fall 2028 program, English-test and funding rules on the official page."
+    }
+  }
+}

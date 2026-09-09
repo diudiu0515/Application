@@ -12,9 +12,9 @@ The application follows the complete workflow `School → Program → Faculty �
 - Top 50 program research set with GPA-aware Dream/Reach/Target/Lower Risk strategy;
 - recurring official-site faculty discovery, per-school coverage audit and human confirmation gate;
 - complete program requirements, international rules, funding, rankings and admission-model fields;
-- complete faculty profiles, weighted fit matrix, papers, lab members, Tsinghua network, decision notes and an 18-item research checklist;
+- clickable complete faculty profiles, weighted fit matrix, papers, lab members, public Mainland-China/Tsinghua evidence, decision notes and an 18-item research checklist;
 - shortlist, application checklist, SOP, recommendations, professor contact, tests, calendar, interviews, offers and costs;
-- summer-research eligibility and execution scoring for a Tsinghua undergraduate;
+- school-level Mainland/international applicant context plus summer-research eligibility and execution scoring for a Tsinghua undergraduate;
 - official/community evidence separation, field-level verification, triangulation, faculty timeline and traceable generated-content registry;
 - global search, requested filters, quick checks, bulk operations, JSON backup/restore and CSV exchange for every entity.
 
