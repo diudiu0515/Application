@@ -3,7 +3,7 @@ from pathlib import Path
 import quickjs
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPTS = ["data/generated-faculty.js", "seed.js", "summer-data.js", "modules-data.js", "modules.js", "faculty-review.js", "data-tools.js", "application-workspace.js", "evidence.js", "summer-workspace.js", "calendar-workspace.js", "fit-workspace.js", "decision-tools.js", "search-tools.js", "program-workspace.js", "shortlist-workspace.js", "materials-workspace.js", "intelligence-workspace.js", "faculty-operations.js", "app.js"]
+SCRIPTS = ["data/generated-faculty.js", "seed.js", "summer-data.js", "modules-data.js", "modules.js", "faculty-review.js", "data-tools.js", "application-workspace.js", "evidence.js", "summer-workspace.js", "calendar-workspace.js", "fit-workspace.js", "decision-tools.js", "search-tools.js", "program-workspace.js", "shortlist-workspace.js", "materials-workspace.js", "intelligence-workspace.js", "faculty-operations.js", "faculty-detail-workspace.js", "app.js"]
 VIEWS = [
     "dashboard", "programs", "faculty", "matrix", "research", "papers",
     "publications", "sop", "recommendations", "contact_workspace", "tests",
@@ -33,7 +33,9 @@ def main():
         length = context.eval("renderView().length")
         assert length > 100, f"{view} produced an empty view"
         print(f"{view}: {length} chars")
-    assert context.eval("state.meta.schemaVersion") == 3
+    assert context.eval("state.meta.schemaVersion") == 4
+    assert context.eval("typeof openFacultyWorkspace") == "function"
+    context.eval("openFacultyWorkspace(state.faculty[0].id)")
     print("runtime smoke passed")
 
 if __name__ == "__main__":
