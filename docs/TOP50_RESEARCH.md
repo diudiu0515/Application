@@ -1,6 +1,6 @@
 # Top 50 faculty discovery research
 
-> Snapshot: 2026-09-09 · 243 candidate faculty · 50/50 schools with at least one candidate · 0 zero-result schools.
+> Snapshot: 2026-09-09 · 250 candidate faculty · 50/50 schools with at least one candidate · 0 zero-result schools.
 
 ## Scope and interpretation
 
@@ -16,7 +16,7 @@ Every automated record enters `needs_review`. A record becomes a confirmed facul
 - Names are normalized and deduplicated per school. Navigation, UI labels, student-roster fallbacks and known section headings are rejected.
 - The scheduled collector runs weekly. Refreshes update discovery evidence but preserve the applicant’s review status, consideration, checklists, contact state, tags and decision rationale.
 
-Current family coverage is overlapping: `robotics_embodied` 145, `llm_reasoning` 73, `multimodal_vlm` 71, `benchmark_data` 67, `manual_primary_verification` 51, `spatial_interaction` 36, `affective_social` 25, `video_ego_exo` 20.
+Current family coverage is overlapping: `robotics_embodied` 148, `llm_reasoning` 77, `multimodal_vlm` 76, `benchmark_data` 70, `manual_primary_verification` 50, `spatial_interaction` 38, `affective_social` 25, `video_ego_exo` 21.
 
 ## GPA 3.3, school priority and summer research
 
@@ -36,16 +36,16 @@ The editable shortlist then emphasizes verified faculty fit and advisor depth. A
 | 2 | Stanford University | 3 | 3 / 0 | 1 | [official page](https://www.cs.stanford.edu/people-cs/faculty-research/robotics) |
 | 3 | Carnegie Mellon University | 11 | 11 / 0 | 3 | [official page](https://www.ri.cmu.edu/people/all-ri-people/) |
 | 4 | University of California, Berkeley | 4 | 0 / 4 | 5 | [official page](https://www2.eecs.berkeley.edu/Faculty/Lists/faculty.html) |
-| 5 | University of Illinois Urbana-Champaign | 23 | 23 / 0 | 3 | [official page](https://cs.illinois.edu/research/areas/artificial-intelligence) |
+| 5 | University of Illinois Urbana-Champaign | 28 | 28 / 0 | 2 | [official page](https://cs.illinois.edu/research/areas/artificial-intelligence) |
 | 6 | Cornell University | 5 | 3 / 2 | 1 | [official page](https://www.cs.cornell.edu/people/faculty) |
-| 7 | University of Washington | 1 | 0 / 1 | 3 | [official page](https://www.cs.washington.edu/research/artificial-intelligence/ai-faculty-members/) |
+| 7 | University of Washington | 1 | 0 / 1 | 2 | [official page](https://www.cs.washington.edu/research/artificial-intelligence/ai-faculty-members/) |
 | 8 | Georgia Institute of Technology | 1 | 1 / 0 | 2 | [official page](https://www.cc.gatech.edu/people/faculty) |
-| 9 | Princeton University | 7 | 7 / 0 | 3 | [official page](https://www.cs.princeton.edu/research/areas/robotics) |
+| 9 | Princeton University | 9 | 9 / 0 | 3 | [official page](https://www.cs.princeton.edu/research/areas/robotics) |
 | 10 | University of Texas at Austin | 11 | 10 / 1 | 3 | [official page](https://www.cs.utexas.edu/research/computer-vision) |
 | 11 | University of Michigan | 3 | 0 / 3 | 1 | [official page](https://cse.engin.umich.edu/people/faculty/) |
 | 12 | University of California, San Diego | 2 | 0 / 2 | 3 | [official page](https://cse.ucsd.edu/people/faculty-profiles) |
 | 13 | University of California, Los Angeles | 3 | 1 / 2 | 2 | [official page](https://www.cs.ucla.edu/faculty/) |
-| 14 | Columbia University | 6 | 6 / 0 | 0 | [official page](https://www.cs.columbia.edu/people/faculty/) |
+| 14 | Columbia University | 5 | 5 / 0 | 0 | [official page](https://www.cs.columbia.edu/people/faculty/) |
 | 15 | Harvard University | 1 | 1 / 0 | 2 | [official page](https://seas.harvard.edu/computer-science/people) |
 | 16 | University of Pennsylvania | 3 | 1 / 2 | 1 | [official page](https://www.cis.upenn.edu/people/faculty/) |
 | 17 | University of Wisconsin-Madison | 8 | 7 / 1 | 2 | [official page](https://www.cs.wisc.edu/people/faculty-2/) |
@@ -79,7 +79,7 @@ The editable shortlist then emphasizes verified faculty fit and advisor depth. A
 | 45 | Washington University in St. Louis | 3 | 1 / 2 | 1 | [official page](https://engineering.washu.edu/faculty/) |
 | 46 | University of Arizona | 2 | 0 / 2 | 3 | [official page](https://www.cs.arizona.edu/person/faculty) |
 | 47 | University of California, Santa Cruz | 2 | 2 / 0 | 1 | [official page](https://engineering.ucsc.edu/departments/computer-science-and-engineering/faculty/) |
-| 48 | Boston University | 2 | 0 / 2 | 1 | [official page](https://www.bu.edu/cs/research-groups/ml/) |
+| 48 | Boston University | 3 | 2 / 1 | 1 | [official page](https://www.bu.edu/cs/research-groups/ml/) |
 | 49 | Arizona State University | 2 | 1 / 1 | 1 | [official page](https://scai.engineering.asu.edu/faculty/) |
 | 50 | University of Rochester | 2 | 0 / 2 | 1 | [official page](https://www.cs.rochester.edu/people/faculty/index.html) |
 
