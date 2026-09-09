@@ -1,26 +1,34 @@
 {
-  "generatedAt": "2026-09-07T09:28:37.115455+00:00",
+  "generatedAt": "2026-09-09T14:33:15.010997+00:00",
   "schools": 50,
-  "candidates": 145,
+  "candidates": 243,
+  "coveredSchools": 50,
+  "zeroSchools": 0,
   "details": [
     {
+      "rank": 1,
       "school": "Massachusetts Institute of Technology",
-      "candidates": 5,
+      "candidates": 7,
+      "coverage": "covered",
       "errors": [
         "https://www.eecs.mit.edu/people/faculty/: HTTPError",
         "https://www.eecs.mit.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 2,
       "school": "Stanford University",
       "candidates": 3,
+      "coverage": "covered",
       "errors": [
         "https://www.cs.stanford.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 3,
       "school": "Carnegie Mellon University",
-      "candidates": 10,
+      "candidates": 11,
+      "coverage": "covered",
       "errors": [
         "https://www.cs.cmu.edu/faculty/: HTTPError",
         "https://www.cs.cmu.edu/people/faculty/: HTTPError",
@@ -28,47 +36,64 @@
       ]
     },
     {
+      "rank": 4,
       "school": "University of California, Berkeley",
-      "candidates": 0,
+      "candidates": 4,
+      "coverage": "covered",
       "errors": [
+        "https://www2.eecs.berkeley.edu/Faculty/Lists/faculty.html: HTTPError",
+        "https://www2.eecs.berkeley.edu/Research/Areas/CIR/: HTTPError",
+        "https://rail.eecs.berkeley.edu/people.html: HTTPError",
         "https://www2.eecs.berkeley.edu/Directories/directory-nostudents.html: HTTPError",
         "https://eecs.berkeley.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 5,
       "school": "University of Illinois Urbana-Champaign",
       "candidates": 23,
+      "coverage": "covered",
       "errors": [
+        "https://siebelschool.illinois.edu/about/people/all-faculty/tozhang: TimeoutError",
         "https://siebelschool.illinois.edu/faculty/: HTTPError",
         "https://siebelschool.illinois.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 6,
       "school": "Cornell University",
-      "candidates": 2,
+      "candidates": 5,
+      "coverage": "covered",
       "errors": [
         "https://www.cs.cornell.edu/faculty/: HTTPError"
       ]
     },
     {
+      "rank": 7,
       "school": "University of Washington",
       "candidates": 1,
+      "coverage": "covered",
       "errors": [
+        "https://robotics.cs.washington.edu/: RemoteDisconnected",
         "https://www.cs.washington.edu/faculty/: HTTPError",
         "https://www.cs.washington.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 8,
       "school": "Georgia Institute of Technology",
       "candidates": 1,
+      "coverage": "covered",
       "errors": [
         "https://www.cc.gatech.edu/faculty/: HTTPError",
         "https://www.cc.gatech.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 9,
       "school": "Princeton University",
-      "candidates": 8,
+      "candidates": 7,
+      "coverage": "covered",
       "errors": [
         "https://www.cs.princeton.edu/faculty/: HTTPError",
         "https://www.cs.princeton.edu/people/: HTTPError",
@@ -76,8 +101,10 @@
       ]
     },
     {
+      "rank": 10,
       "school": "University of Texas at Austin",
-      "candidates": 9,
+      "candidates": 11,
+      "coverage": "covered",
       "errors": [
         "https://www.cs.utexas.edu/faculty/: HTTPError",
         "https://www.cs.utexas.edu/people/faculty/: HTTPError",
@@ -85,15 +112,19 @@
       ]
     },
     {
+      "rank": 11,
       "school": "University of Michigan",
-      "candidates": 0,
+      "candidates": 3,
+      "coverage": "covered",
       "errors": [
         "https://cse.engin.umich.edu/: HTTPError"
       ]
     },
     {
+      "rank": 12,
       "school": "University of California, San Diego",
-      "candidates": 0,
+      "candidates": 2,
+      "coverage": "covered",
       "errors": [
         "https://cse.ucsd.edu/faculty/: HTTPError",
         "https://cse.ucsd.edu/people/faculty/: HTTPError",
@@ -101,59 +132,75 @@
       ]
     },
     {
+      "rank": 13,
       "school": "University of California, Los Angeles",
-      "candidates": 0,
+      "candidates": 3,
+      "coverage": "covered",
       "errors": [
         "https://www.cs.ucla.edu/people/: HTTPError",
         "https://www.cs.ucla.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 14,
       "school": "Columbia University",
-      "candidates": 5,
+      "candidates": 6,
+      "coverage": "covered",
       "errors": []
     },
     {
+      "rank": 15,
       "school": "Harvard University",
-      "candidates": 0,
+      "candidates": 1,
+      "coverage": "covered",
       "errors": [
         "https://seas.harvard.edu/people/faculty/: HTTPError",
         "https://seas.harvard.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 16,
       "school": "University of Pennsylvania",
-      "candidates": 0,
+      "candidates": 3,
+      "coverage": "covered",
       "errors": [
         "https://www.cis.upenn.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 17,
       "school": "University of Wisconsin-Madison",
-      "candidates": 0,
+      "candidates": 8,
+      "coverage": "covered",
       "errors": [
         "https://www.cs.wisc.edu/people/faculty/: HTTPError",
         "https://www.cs.wisc.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 18,
       "school": "University of Maryland, College Park",
-      "candidates": 8,
+      "candidates": 10,
+      "coverage": "covered",
       "errors": [
         "https://www.cs.umd.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 19,
       "school": "Purdue University",
       "candidates": 7,
+      "coverage": "covered",
       "errors": [
         "https://www.cs.purdue.edu/faculty/: HTTPError",
         "https://www.cs.purdue.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 20,
       "school": "University of Massachusetts Amherst",
-      "candidates": 0,
+      "candidates": 1,
+      "coverage": "covered",
       "errors": [
         "https://www.cics.umass.edu/people/faculty: HTTPError",
         "https://www.cics.umass.edu/faculty/: HTTPError",
@@ -162,33 +209,43 @@
       ]
     },
     {
+      "rank": 21,
       "school": "University of Southern California",
-      "candidates": 11,
+      "candidates": 12,
+      "coverage": "covered",
       "errors": []
     },
     {
+      "rank": 22,
       "school": "Yale University",
-      "candidates": 0,
+      "candidates": 2,
+      "coverage": "covered",
       "errors": []
     },
     {
+      "rank": 23,
       "school": "Brown University",
-      "candidates": 2,
+      "candidates": 3,
+      "coverage": "covered",
       "errors": [
         "https://cs.brown.edu/faculty/: HTTPError",
         "https://cs.brown.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 24,
       "school": "Johns Hopkins University",
-      "candidates": 13,
+      "candidates": 14,
+      "coverage": "covered",
       "errors": [
         "https://www.cs.jhu.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 25,
       "school": "New York University",
-      "candidates": 3,
+      "candidates": 1,
+      "coverage": "covered",
       "errors": [
         "https://cs.nyu.edu/people/faculty/: HTTPError",
         "https://cs.nyu.edu/people/: HTTPError",
@@ -196,29 +253,37 @@
       ]
     },
     {
+      "rank": 26,
       "school": "Northwestern University",
-      "candidates": 7,
+      "candidates": 8,
+      "coverage": "covered",
       "errors": [
         "https://www.mccormick.northwestern.edu/computer-science/faculty/: HTTPError",
         "https://www.mccormick.northwestern.edu/computer-science/directory/: HTTPError"
       ]
     },
     {
+      "rank": 27,
       "school": "Duke University",
-      "candidates": 1,
+      "candidates": 7,
+      "coverage": "covered",
       "errors": [
         "https://cs.duke.edu/faculty/: HTTPError",
         "https://cs.duke.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 28,
       "school": "University of California, Irvine",
-      "candidates": 0,
+      "candidates": 3,
+      "coverage": "covered",
       "errors": []
     },
     {
+      "rank": 29,
       "school": "University of California, Santa Barbara",
-      "candidates": 10,
+      "candidates": 7,
+      "coverage": "covered",
       "errors": [
         "https://www.cs.ucsb.edu/faculty/: HTTPError",
         "https://www.cs.ucsb.edu/people/: HTTPError",
@@ -226,37 +291,47 @@
       ]
     },
     {
+      "rank": 30,
       "school": "University of North Carolina at Chapel Hill",
       "candidates": 3,
+      "coverage": "covered",
       "errors": [
         "https://cs.unc.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 31,
       "school": "Rice University",
-      "candidates": 0,
+      "candidates": 3,
+      "coverage": "covered",
       "errors": [
         "https://csweb.rice.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 32,
       "school": "University of Chicago",
-      "candidates": 0,
+      "candidates": 3,
+      "coverage": "covered",
       "errors": [
         "https://cs.uchicago.edu/faculty/: HTTPError",
         "https://cs.uchicago.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 33,
       "school": "University of Virginia",
-      "candidates": 0,
+      "candidates": 2,
+      "coverage": "covered",
       "errors": [
         "https://engineering.virginia.edu/department/computer-science: HTTPError"
       ]
     },
     {
+      "rank": 34,
       "school": "Pennsylvania State University",
-      "candidates": 0,
+      "candidates": 3,
+      "coverage": "covered",
       "errors": [
         "https://www.eecs.psu.edu/departments/EECS-Departments-Computer-Science-Engineering-Faculty.aspx: HTTPError",
         "https://www.eecs.psu.edu/faculty/: HTTPError",
@@ -266,8 +341,10 @@
       ]
     },
     {
+      "rank": 35,
       "school": "Ohio State University",
-      "candidates": 0,
+      "candidates": 1,
+      "coverage": "covered",
       "errors": [
         "https://cse.osu.edu/people/faculty: HTTPError",
         "https://cse.osu.edu/faculty/: HTTPError",
@@ -275,15 +352,19 @@
       ]
     },
     {
+      "rank": 36,
       "school": "Rutgers University",
-      "candidates": 0,
+      "candidates": 3,
+      "coverage": "covered",
       "errors": [
         "https://www.cs.rutgers.edu/: HTTPError"
       ]
     },
     {
+      "rank": 37,
       "school": "Texas A&M University",
-      "candidates": 0,
+      "candidates": 2,
+      "coverage": "covered",
       "errors": [
         "https://engineering.tamu.edu/cse/faculty/: HTTPError",
         "https://engineering.tamu.edu/cse/people/faculty/: HTTPError",
@@ -292,8 +373,10 @@
       ]
     },
     {
+      "rank": 38,
       "school": "University of Minnesota",
-      "candidates": 0,
+      "candidates": 4,
+      "coverage": "covered",
       "errors": [
         "https://cse.umn.edu/faculty/: HTTPError",
         "https://cse.umn.edu/people/faculty/: HTTPError",
@@ -301,24 +384,30 @@
       ]
     },
     {
+      "rank": 39,
       "school": "Virginia Tech",
-      "candidates": 0,
+      "candidates": 3,
+      "coverage": "covered",
       "errors": [
         "https://cs.vt.edu/faculty/: HTTPError",
         "https://cs.vt.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 40,
       "school": "Northeastern University",
-      "candidates": 5,
+      "candidates": 19,
+      "coverage": "covered",
       "errors": [
         "https://www.khoury.northeastern.edu/people/faculty/: HTTPError",
         "https://www.khoury.northeastern.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 41,
       "school": "University of Colorado Boulder",
-      "candidates": 0,
+      "candidates": 2,
+      "coverage": "covered",
       "errors": [
         "https://www.colorado.edu/cs/people/faculty/: HTTPError",
         "https://www.colorado.edu/cs/people/: HTTPError",
@@ -326,8 +415,10 @@
       ]
     },
     {
+      "rank": 42,
       "school": "Stony Brook University",
       "candidates": 6,
+      "coverage": "covered",
       "errors": [
         "https://www.cs.stonybrook.edu/faculty/: HTTPError",
         "https://www.cs.stonybrook.edu/people/faculty/: HTTPError",
@@ -335,29 +426,37 @@
       ]
     },
     {
+      "rank": 43,
       "school": "University of California, Davis",
-      "candidates": 0,
+      "candidates": 1,
+      "coverage": "covered",
       "errors": [
         "https://cs.ucdavis.edu/: HTTPError"
       ]
     },
     {
+      "rank": 44,
       "school": "University of Utah",
-      "candidates": 0,
+      "candidates": 1,
+      "coverage": "covered",
       "errors": [
         "https://www.cs.utah.edu/directory/: HTTPError"
       ]
     },
     {
+      "rank": 45,
       "school": "Washington University in St. Louis",
-      "candidates": 0,
+      "candidates": 3,
+      "coverage": "covered",
       "errors": [
         "https://engineering.wustl.edu/academics/programs/computer-science-engineering/: HTTPError"
       ]
     },
     {
+      "rank": 46,
       "school": "University of Arizona",
-      "candidates": 0,
+      "candidates": 2,
+      "coverage": "covered",
       "errors": [
         "https://www.cs.arizona.edu/person/faculty: HTTPError",
         "https://www.cs.arizona.edu/faculty/: HTTPError",
@@ -365,29 +464,37 @@
       ]
     },
     {
+      "rank": 47,
       "school": "University of California, Santa Cruz",
-      "candidates": 0,
+      "candidates": 2,
+      "coverage": "covered",
       "errors": [
         "https://engineering.ucsc.edu/departments/computer-science-and-engineering/directory/: HTTPError"
       ]
     },
     {
+      "rank": 48,
       "school": "Boston University",
       "candidates": 2,
+      "coverage": "covered",
       "errors": [
         "https://www.bu.edu/cs/directory/: HTTPError"
       ]
     },
     {
+      "rank": 49,
       "school": "Arizona State University",
-      "candidates": 0,
+      "candidates": 2,
+      "coverage": "covered",
       "errors": [
         "https://scai.engineering.asu.edu/people/: HTTPError"
       ]
     },
     {
+      "rank": 50,
       "school": "University of Rochester",
-      "candidates": 0,
+      "candidates": 2,
+      "coverage": "covered",
       "errors": [
         "https://www.cs.rochester.edu/department/: HTTPError"
       ]

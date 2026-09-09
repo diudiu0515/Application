@@ -30,4 +30,5 @@ jobs:
           git config user.email "application-intelligence-bot@users.noreply.github.com"
           git add data/generated-faculty.js data/collection-report.json
           git diff --cached --quiet || git commit -m "Refresh faculty candidate evidence"
-          git push
+          git pull --rebase origin main
+          git push origin HEAD:main

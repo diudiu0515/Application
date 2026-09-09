@@ -1,6 +1,6 @@
 (function(){
   const E=v=>String(v??"").replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));
-  const entities=["programs","faculty","applications","sources","deadlines","contactRecords","papers","labMembers","communityClaims"];
+  const entities=["programs","faculty","projects","matches","schoolPriorities","applications","sources","verificationRecords","deadlines","contactRecords","papers","publications","sopDocuments","recommenders","recommendations","tests","cvItems","interviews","offers","costs","summerResearch","labMembers","communityClaims","facultyTimeline","notes"];
   const csvCell=v=>`"${String(v??"").replaceAll('"','""')}"`;
   function download(name,text,type="text/csv") {const blob=new Blob([text],{type}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.click();URL.revokeObjectURL(a.href);}
   function exportCsv(key){const rows=state[key]||[];if(!rows.length){alert("No records to export");return}const headers=[...new Set(rows.flatMap(Object.keys))].filter(x=>!headersUnsafe(x));const csv=[headers.map(csvCell).join(","),...rows.map(row=>headers.map(h=>csvCell(typeof row[h]==="object"?JSON.stringify(row[h]):row[h])).join(","))].join("\n");download(`${key}-${new Date().toISOString().slice(0,10)}.csv`,csv);persist("CSV exported",key,`${rows.length} records`);}

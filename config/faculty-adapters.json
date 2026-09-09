@@ -1,32 +1,700 @@
 {
-  "Carnegie Mellon University": {"directories": ["https://www.ri.cmu.edu/people/all-ri-people/", "https://www.lti.cs.cmu.edu/people/index.html", "https://ml.cmu.edu/people/", "https://csd.cmu.edu/people/faculty", "https://hcii.cmu.edu/people/faculty"]},
-  "University of Michigan": {"directories": ["https://cse.engin.umich.edu/people/faculty/"], "profiles": [["Jason Corso","https://cse.engin.umich.edu/stories/jason-corso-named-toyota-professor-of-artificial-intelligence"],["Chad Jenkins","https://cse.engin.umich.edu/stories/technology-that-serves-all-a-single-step-could-pave-the-way"],["Jeong Joon Park","https://cse.engin.umich.edu/stories/cse-welcomes-new-faculty-to-campus-for-the-23-24-academic-year"]]},
-  "University of California, San Diego": {"directories": ["https://cse.ucsd.edu/people/faculty-profiles"]},
-  "University of California, Los Angeles": {"directories": ["https://www.cs.ucla.edu/faculty/"]},
-  "Harvard University": {"directories": ["https://seas.harvard.edu/computer-science/people"], "profiles": [["Heng Yang","https://hankyang.seas.harvard.edu/"]]},
-  "University of Pennsylvania": {"directories": ["https://www.cis.upenn.edu/people/faculty/"], "profiles": [["Dinesh Jayaraman","https://penn-pal-lab.github.io/"],["Kostas Daniilidis","https://www.cis.upenn.edu/~kostas/kostas2018.pdf"],["Eric Eaton","https://www.cis.upenn.edu/~eeaton/EatonCV.pdf"]]},
-  "University of Wisconsin-Madison": {"directories": ["https://www.cs.wisc.edu/people/faculty-2/","https://www.cs.wisc.edu/research/research-groups/"], "profiles": [["Bilge Mutlu","https://pages.cs.wisc.edu/~bilge/"],["Yong Jae Lee","https://pages.cs.wisc.edu/~yongjaelee/"]]},
-  "University of Massachusetts Amherst": {"directories": ["https://www.cics.umass.edu/people/faculty"], "profiles": [["Vangelis Kalogerakis","https://www.cics.umass.edu/about/directory/vangelis-kalogerakis"]]},
-  "University of Southern California": {"directories": ["https://www.cs.usc.edu/directory/faculty/"]},
-  "Yale University": {"directories": ["https://engineering.yale.edu/research-and-faculty/faculty-directory"], "profiles": [["Brian Scassellati","https://engineering.yale.edu/research-and-faculty/faculty-directory/brian-scassellati"],["Marynel Vázquez","https://robotsforgood.yale.edu/about/about-team"]]},
-  "University of California, Irvine": {"directories": ["https://ics.uci.edu/people/","https://cml.ics.uci.edu/faculty/"], "profiles": [["Judy Hoffman","https://vision.ics.uci.edu/people/judy-hoffman/"],["Alexander Berg","https://vision.ics.uci.edu/people/alexander-berg/"],["Charless Fowlkes","https://ics.uci.edu/~fowlkes/"]]},
-  "Rice University": {"directories": ["https://csweb.rice.edu/people/faculty","https://cs.rice.edu/research/artificial-intelligence-machine-learning"], "profiles": [["Lydia Kavraki","https://cs.rice.edu/news/two-rice-cs-faculty-members-named-endowed-chairs"],["Vicente Ordóñez-Román","https://www.cs.rice.edu/~vo9/"],["Chen Wei","https://cs.rice.edu/news/rice-computer-science-welcomes-four-new-faculty-members"]]},
-  "University of Chicago": {"directories": ["https://cs.uchicago.edu/people/faculty/","https://cs.uchicago.edu/research/visual-computing/"], "profiles": [["Michael Maire","https://cs.uchicago.edu/people/michael-maire/"],["Sarah Sebo","https://cs.uchicago.edu/people/sarah-sebo/"],["Pedro Lopes","https://cs.uchicago.edu/people/pedro-lopes"]]},
-  "University of Virginia": {"directories": ["https://engineering.virginia.edu/department/computer-science/people","https://engineering.virginia.edu/department/computer-science/research/robotics"], "profiles": [["Rohan Chandra","https://engineering.virginia.edu/faculty/rohan-chandra"],["Madhur Behl","https://engineering.virginia.edu/faculty/madhur-behl"]]},
-  "Pennsylvania State University": {"directories": ["https://www.eecs.psu.edu/departments/EECS-Departments-Computer-Science-Engineering-Faculty.aspx","https://www.eecs.psu.edu/departments/cse-faculty-list.aspx"], "profiles": [["Yanxi Liu","https://www.eecs.psu.edu/departments/directory-detail-g.aspx?q=YUL11"],["Huijuan Xu","https://www.eecs.psu.edu/departments/directory-detail-g.aspx?q=hkx5063"],["Robert Collins","https://www.eecs.psu.edu/departments/directory-detail-g.aspx?q=RTC12"]]},
-  "Ohio State University": {"directories": ["https://cse.osu.edu/people/faculty","https://cse.osu.edu/faculty-research/computer-vision"], "profiles": [["Wei-Lun Chao","https://cse.osu.edu/people/chao.209"]]},
-  "Rutgers University": {"directories": ["https://www.cs.rutgers.edu/people/professors"]},
-  "Texas A&M University": {"directories": ["https://engineering.tamu.edu/cse/profiles/index.html"]},
-  "University of Minnesota": {"directories": ["https://cse.umn.edu/cs/faculty"]},
-  "University of California, Davis": {"directories": ["https://cs.ucdavis.edu/people/faculty"]},
-  "University of Utah": {"directories": ["https://www.cs.utah.edu/people/faculty/"]},
-  "Washington University in St. Louis": {"directories": ["https://engineering.washu.edu/faculty/index.html?department=Computer+Science+%26+Engineering"]},
-  "University of Arizona": {"directories": ["https://www.cs.arizona.edu/person/faculty"]},
-  "University of California, Santa Cruz": {"directories": ["https://engineering.ucsc.edu/departments/computer-science-and-engineering/faculty/"]},
-  "Arizona State University": {"directories": ["https://scai.engineering.asu.edu/faculty/"]},
-  "University of Rochester": {"directories": ["https://www.cs.rochester.edu/people/faculty/index.html"]},
-  "Georgia Institute of Technology": {"directories": ["https://www.cc.gatech.edu/people/faculty"]},
-  "Columbia University": {"directories": ["https://www.cs.columbia.edu/people/faculty/"]},
-  "New York University": {"directories": ["https://cs.nyu.edu/dynamic/people/faculty/"]},
-  "Stony Brook University": {"directories": ["https://www.cs.stonybrook.edu/people/faculty"]}
+  "Massachusetts Institute of Technology": {
+    "directories": [
+      "https://www.eecs.mit.edu/role/faculty/?fwp_research=robotics"
+    ]
+  },
+  "Stanford University": {
+    "directories": [
+      "https://www.cs.stanford.edu/people-cs/faculty-research/robotics"
+    ]
+  },
+  "University of California, Berkeley": {
+    "directories": [
+      "https://www2.eecs.berkeley.edu/Faculty/Lists/faculty.html",
+      "https://www2.eecs.berkeley.edu/Research/Areas/CIR/",
+      "https://ember-lab.eecs.berkeley.edu/people/",
+      "https://rail.eecs.berkeley.edu/people.html"
+    ],
+    "profiles": [
+      [
+        "Jitendra Malik",
+        "https://people.eecs.berkeley.edu/~malik/?attredirects=0"
+      ],
+      [
+        "Pieter Abbeel",
+        "https://vcresearch.berkeley.edu/faculty/pieter-abbeel"
+      ],
+      [
+        "Trevor Darrell",
+        "https://www2.eecs.berkeley.edu/Faculty/Homepages/darrell.html"
+      ],
+      [
+        "Alexei Efros",
+        "https://www2.eecs.berkeley.edu/Faculty/Homepages/efros.html"
+      ]
+    ]
+  },
+  "University of Illinois Urbana-Champaign": {
+    "directories": [
+      "https://cs.illinois.edu/research/areas/artificial-intelligence"
+    ],
+    "profiles": [
+      [
+        "Yuxiong Wang",
+        "https://yxw.cs.illinois.edu/about/"
+      ]
+    ]
+  },
+  "Cornell University": {
+    "directories": [
+      "https://www.cs.cornell.edu/people/faculty"
+    ],
+    "profiles": [
+      [
+        "Kuan Fang",
+        "https://www.cs.cornell.edu/people/kuan-fang"
+      ],
+      [
+        "Angelique Taylor",
+        "https://www.cs.cornell.edu/people/angelique-taylor"
+      ],
+      [
+        "Ramin Zabih",
+        "https://www.cs.cornell.edu/rdz/"
+      ]
+    ]
+  },
+  "University of Washington": {
+    "directories": [
+      "https://www.cs.washington.edu/research/artificial-intelligence/ai-faculty-members/",
+      "https://robotics.cs.washington.edu/"
+    ],
+    "profiles": [
+      [
+        "Ranjay Krishna",
+        "https://www.cs.washington.edu/people/faculty/ranjay-krishna/"
+      ]
+    ]
+  },
+  "Princeton University": {
+    "directories": [
+      "https://www.cs.princeton.edu/research/areas/robotics",
+      "https://vision.cs.princeton.edu/"
+    ],
+    "profiles": [
+      [
+        "Jia Deng",
+        "https://pvl.cs.princeton.edu/"
+      ],
+      [
+        "Felix Heide",
+        "https://www.cs.princeton.edu/~fheide/"
+      ]
+    ]
+  },
+  "University of Texas at Austin": {
+    "directories": [
+      "https://www.cs.utexas.edu/research/computer-vision",
+      "https://rpl.cs.utexas.edu/"
+    ],
+    "profiles": [
+      [
+        "Georgios Pavlakos",
+        "https://www.cs.utexas.edu/people/faculty-researchers/georgios-pavlakos"
+      ],
+      [
+        "Roberto Martin-Martin",
+        "https://www.cs.utexas.edu/people/faculty-researchers/roberto-martin-martin"
+      ]
+    ]
+  },
+  "University of Maryland, College Park": {
+    "directories": [
+      "https://www.cs.umd.edu/people/faculty",
+      "https://www.cs.umd.edu/node/27017"
+    ]
+  },
+  "Purdue University": {
+    "directories": [
+      "https://www.cs.purdue.edu/research/robotics-computer-vision.html",
+      "https://www.cs.purdue.edu/people/faculty/"
+    ],
+    "profiles": [
+      [
+        "Zachary Kingston",
+        "https://www.cs.purdue.edu/people/faculty/zkingsto.html"
+      ],
+      [
+        "Aniket Bera",
+        "https://www.cs.purdue.edu/people/faculty/bera89.html"
+      ]
+    ]
+  },
+  "Brown University": {
+    "directories": [
+      "https://cs.brown.edu/people/faculty/",
+      "https://cs.brown.edu/research/areas/",
+      "https://h2r.cs.brown.edu/people/",
+      "https://ivl.cs.brown.edu/"
+    ],
+    "profiles": [
+      [
+        "Stefanie Tellex",
+        "https://cs.brown.edu/people/faculty/stellex/"
+      ],
+      [
+        "George Konidaris",
+        "https://cs.brown.edu/people/faculty/gdk/"
+      ],
+      [
+        "Srinath Sridhar",
+        "https://ivl.cs.brown.edu/"
+      ]
+    ]
+  },
+  "Johns Hopkins University": {
+    "directories": [
+      "https://www.cs.jhu.edu/research/computer-vision/"
+    ]
+  },
+  "Northwestern University": {
+    "directories": [
+      "https://www.mccormick.northwestern.edu/computer-science/research/areas/robotics.html",
+      "https://www.mccormick.northwestern.edu/computer-science/research/areas/vision-graphics.html"
+    ]
+  },
+  "Duke University": {
+    "directories": [
+      "https://cs.duke.edu/research/computer-vision",
+      "https://robotics.duke.edu/research"
+    ],
+    "profiles": [
+      [
+        "Boyuan Chen",
+        "https://scholars.duke.edu/person/Boyuan.Chen"
+      ],
+      [
+        "Miroslav Pajic",
+        "https://robotics.duke.edu/faculty/miroslav-pajic"
+      ],
+      [
+        "Michael Zavlanos",
+        "https://robotics.duke.edu/faculty/michael-zavlanos"
+      ],
+      [
+        "Carlo Tomasi",
+        "https://scholars.duke.edu/person/tomasi"
+      ]
+    ]
+  },
+  "University of California, Santa Barbara": {
+    "directories": [
+      "https://cs.ucsb.edu/research"
+    ],
+    "profiles": [
+      [
+        "Xin Eric Wang",
+        "https://www.cs.ucsb.edu/people/faculty/xin-eric-wang"
+      ],
+      [
+        "James Preiss",
+        "https://cs.ucsb.edu/people/faculty/james-preiss"
+      ]
+    ]
+  },
+  "University of North Carolina at Chapel Hill": {
+    "directories": [
+      "https://cs.unc.edu/people/faculty/",
+      "https://robotics.cs.unc.edu/"
+    ]
+  },
+  "Northeastern University": {
+    "directories": [
+      "https://www.khoury.northeastern.edu/research_areas/robotics/",
+      "https://www.khoury.northeastern.edu/research_areas/artificial-intelligence/"
+    ]
+  },
+  "Boston University": {
+    "directories": [
+      "https://www.bu.edu/cs/research-groups/ml/",
+      "https://www.bu.edu/cs/research-groups/ivc/people/"
+    ],
+    "profiles": [
+      [
+        "Kate Saenko",
+        "https://www.bu.edu/cds-faculty/profile/kate-saenko/"
+      ],
+      [
+        "Eshed Ohn-Bar",
+        "https://www.bu.edu/cs/research-groups/ml/"
+      ]
+    ]
+  },
+  "Carnegie Mellon University": {
+    "directories": [
+      "https://www.ri.cmu.edu/people/all-ri-people/",
+      "https://www.lti.cs.cmu.edu/people/index.html",
+      "https://ml.cmu.edu/people/",
+      "https://csd.cmu.edu/people/faculty",
+      "https://hcii.cmu.edu/people/faculty"
+    ]
+  },
+  "University of Michigan": {
+    "directories": [
+      "https://cse.engin.umich.edu/people/faculty/"
+    ],
+    "profiles": [
+      [
+        "Jason Corso",
+        "https://cse.engin.umich.edu/stories/jason-corso-named-toyota-professor-of-artificial-intelligence"
+      ],
+      [
+        "Chad Jenkins",
+        "https://cse.engin.umich.edu/stories/technology-that-serves-all-a-single-step-could-pave-the-way"
+      ],
+      [
+        "Jeong Joon Park",
+        "https://cse.engin.umich.edu/stories/cse-welcomes-new-faculty-to-campus-for-the-23-24-academic-year"
+      ]
+    ]
+  },
+  "University of California, San Diego": {
+    "directories": [
+      "https://cse.ucsd.edu/people/faculty-profiles",
+      "https://cri.ucsd.edu/faculty",
+      "https://visualcomputing.ucsd.edu/faculty.shtml"
+    ],
+    "profiles": [
+      [
+        "Henrik Christensen",
+        "https://css.ucsd.edu/people/profiles/hchristensen.html"
+      ],
+      [
+        "Hao Su",
+        "https://jacobsschool.ucsd.edu/faculty/profile?id=457"
+      ]
+    ]
+  },
+  "University of California, Los Angeles": {
+    "directories": [
+      "https://www.cs.ucla.edu/faculty/",
+      "https://www.cs.ucla.edu/research-areas/",
+      "https://samueli.ucla.edu/robotics/"
+    ],
+    "profiles": [
+      [
+        "Bolei Zhou",
+        "https://www.cs.ucla.edu/professor-bolei-zhou-receives-young-investigator-award-from-the-office-of-naval-research/"
+      ],
+      [
+        "Stefano Soatto",
+        "https://web.cs.ucla.edu/~soatto/"
+      ],
+      [
+        "Demetri Terzopoulos",
+        "https://web.cs.ucla.edu/~dt/"
+      ]
+    ]
+  },
+  "Harvard University": {
+    "directories": [
+      "https://seas.harvard.edu/computer-science/people"
+    ],
+    "profiles": [
+      [
+        "Heng Yang",
+        "https://hankyang.seas.harvard.edu/"
+      ]
+    ]
+  },
+  "University of Pennsylvania": {
+    "directories": [
+      "https://www.cis.upenn.edu/people/faculty/"
+    ],
+    "profiles": [
+      [
+        "Dinesh Jayaraman",
+        "https://penn-pal-lab.github.io/"
+      ],
+      [
+        "Kostas Daniilidis",
+        "https://www.cis.upenn.edu/~kostas/kostas2018.pdf"
+      ],
+      [
+        "Eric Eaton",
+        "https://www.cis.upenn.edu/~eeaton/EatonCV.pdf"
+      ]
+    ]
+  },
+  "University of Wisconsin-Madison": {
+    "directories": [
+      "https://www.cs.wisc.edu/people/faculty-2/",
+      "https://www.cs.wisc.edu/research/research-groups/"
+    ],
+    "profiles": [
+      [
+        "Bilge Mutlu",
+        "https://pages.cs.wisc.edu/~bilge/"
+      ],
+      [
+        "Yong Jae Lee",
+        "https://pages.cs.wisc.edu/~yongjaelee/"
+      ]
+    ]
+  },
+  "University of Massachusetts Amherst": {
+    "directories": [
+      "https://www.cics.umass.edu/people/faculty"
+    ],
+    "profiles": [
+      [
+        "Vangelis Kalogerakis",
+        "https://www.cics.umass.edu/about/directory/vangelis-kalogerakis"
+      ]
+    ]
+  },
+  "University of Southern California": {
+    "directories": [
+      "https://www.cs.usc.edu/directory/faculty/"
+    ]
+  },
+  "Yale University": {
+    "directories": [
+      "https://engineering.yale.edu/research-and-faculty/faculty-directory"
+    ],
+    "profiles": [
+      [
+        "Brian Scassellati",
+        "https://engineering.yale.edu/research-and-faculty/faculty-directory/brian-scassellati"
+      ],
+      [
+        "Marynel Vázquez",
+        "https://robotsforgood.yale.edu/about/about-team"
+      ]
+    ]
+  },
+  "University of California, Irvine": {
+    "directories": [
+      "https://ics.uci.edu/people/",
+      "https://cml.ics.uci.edu/faculty/"
+    ],
+    "profiles": [
+      [
+        "Judy Hoffman",
+        "https://vision.ics.uci.edu/people/judy-hoffman/"
+      ],
+      [
+        "Alexander Berg",
+        "https://vision.ics.uci.edu/people/alexander-berg/"
+      ],
+      [
+        "Charless Fowlkes",
+        "https://ics.uci.edu/~fowlkes/"
+      ]
+    ]
+  },
+  "Rice University": {
+    "directories": [
+      "https://csweb.rice.edu/people/faculty",
+      "https://cs.rice.edu/research/artificial-intelligence-machine-learning"
+    ],
+    "profiles": [
+      [
+        "Lydia Kavraki",
+        "https://cs.rice.edu/news/two-rice-cs-faculty-members-named-endowed-chairs"
+      ],
+      [
+        "Vicente Ordóñez-Román",
+        "https://www.cs.rice.edu/~vo9/"
+      ],
+      [
+        "Chen Wei",
+        "https://cs.rice.edu/news/rice-computer-science-welcomes-four-new-faculty-members"
+      ]
+    ]
+  },
+  "University of Chicago": {
+    "directories": [
+      "https://cs.uchicago.edu/people/faculty/",
+      "https://cs.uchicago.edu/research/visual-computing/"
+    ],
+    "profiles": [
+      [
+        "Michael Maire",
+        "https://cs.uchicago.edu/people/michael-maire/"
+      ],
+      [
+        "Sarah Sebo",
+        "https://cs.uchicago.edu/people/sarah-sebo/"
+      ],
+      [
+        "Pedro Lopes",
+        "https://cs.uchicago.edu/people/pedro-lopes"
+      ]
+    ]
+  },
+  "University of Virginia": {
+    "directories": [
+      "https://engineering.virginia.edu/department/computer-science/people",
+      "https://engineering.virginia.edu/department/computer-science/research/robotics"
+    ],
+    "profiles": [
+      [
+        "Rohan Chandra",
+        "https://engineering.virginia.edu/faculty/rohan-chandra"
+      ],
+      [
+        "Madhur Behl",
+        "https://engineering.virginia.edu/faculty/madhur-behl"
+      ]
+    ]
+  },
+  "Pennsylvania State University": {
+    "directories": [
+      "https://www.eecs.psu.edu/departments/EECS-Departments-Computer-Science-Engineering-Faculty.aspx",
+      "https://www.eecs.psu.edu/departments/cse-faculty-list.aspx"
+    ],
+    "profiles": [
+      [
+        "Yanxi Liu",
+        "https://www.eecs.psu.edu/departments/directory-detail-g.aspx?q=YUL11"
+      ],
+      [
+        "Huijuan Xu",
+        "https://www.eecs.psu.edu/departments/directory-detail-g.aspx?q=hkx5063"
+      ],
+      [
+        "Robert Collins",
+        "https://www.eecs.psu.edu/departments/directory-detail-g.aspx?q=RTC12"
+      ]
+    ]
+  },
+  "Ohio State University": {
+    "directories": [
+      "https://cse.osu.edu/people/faculty",
+      "https://cse.osu.edu/faculty-research/computer-vision"
+    ],
+    "profiles": [
+      [
+        "Wei-Lun Chao",
+        "https://cse.osu.edu/people/chao.209"
+      ]
+    ]
+  },
+  "Rutgers University": {
+    "directories": [
+      "https://www.cs.rutgers.edu/people/professors"
+    ],
+    "profiles": [
+      [
+        "Kostas Bekris",
+        "https://www.cs.rutgers.edu/people/professors/details/kostas-bekris"
+      ],
+      [
+        "Konstantinos Michmizos",
+        "https://www.cs.rutgers.edu/people/professors/details/konstantinos-michmizos"
+      ],
+      [
+        "Ahmed Elgammal",
+        "https://www.cs.rutgers.edu/people/professors/details/ahmed-elgammal"
+      ]
+    ]
+  },
+  "Texas A&M University": {
+    "directories": [
+      "https://engineering.tamu.edu/cse/profiles/index.html",
+      "https://engineering.tamu.edu/cse/research/areas/computer-vision.html"
+    ],
+    "profiles": [
+      [
+        "Wenhao Luo",
+        "https://engineering.tamu.edu/cse/profiles/luo-wenhao.html"
+      ]
+    ]
+  },
+  "University of Minnesota": {
+    "directories": [
+      "https://cse.umn.edu/cs/faculty",
+      "https://cse.umn.edu/cs/robotics-and-artificial-intelligence"
+    ],
+    "profiles": [
+      [
+        "Karthik Desingh",
+        "https://cse.umn.edu/cs/news/meet-faculty-karthik-desingh"
+      ],
+      [
+        "Hyun Soo Park",
+        "https://cse.umn.edu/cs/hyun-soo-park"
+      ],
+      [
+        "Paul R. Schrater",
+        "https://cse.umn.edu/cs/paul-schrater"
+      ]
+    ]
+  },
+  "Virginia Tech": {
+    "directories": [
+      "https://cs.vt.edu/people/faculty.html",
+      "https://cs.vt.edu/research/research-areas.html"
+    ],
+    "profiles": [
+      [
+        "Chris Thomas",
+        "https://website.cs.vt.edu/people/faculty/chris-thomas.html"
+      ],
+      [
+        "Simon Stepputtis",
+        "https://website.cs.vt.edu/people/faculty/courtesy-appointment-faculty/simon-stepputtis.html"
+      ],
+      [
+        "Ella Atkins",
+        "https://website.cs.vt.edu/people/faculty/courtesy-appointment-faculty/ella-atkins.html"
+      ]
+    ]
+  },
+  "University of Colorado Boulder": {
+    "directories": [
+      "https://www.colorado.edu/cs/research/robotics",
+      "https://www.colorado.edu/cs/research/artificial-intelligence"
+    ],
+    "profiles": [
+      [
+        "Christoffer Heckman",
+        "https://www.colorado.edu/cs/christoffer-heckman"
+      ],
+      [
+        "Robert MacCurdy",
+        "https://www.colorado.edu/cs/robert-maccurdy"
+      ]
+    ]
+  },
+  "University of California, Davis": {
+    "directories": [
+      "https://cs.ucdavis.edu/people/faculty",
+      "https://cs.ucdavis.edu/faculty-research/artificial-intelligence-and-machine-learning"
+    ],
+    "profiles": [
+      [
+        "Hamed Pirsiavash",
+        "https://web.cs.ucdavis.edu/~hpirsiav/"
+      ]
+    ]
+  },
+  "University of Utah": {
+    "directories": [
+      "https://www.cs.utah.edu/people/faculty/"
+    ],
+    "profiles": [
+      [
+        "Tucker Hermans",
+        "https://robot-learning.cs.utah.edu/"
+      ]
+    ]
+  },
+  "Washington University in St. Louis": {
+    "directories": [
+      "https://engineering.washu.edu/faculty/"
+    ],
+    "profiles": [
+      [
+        "Aaron Bobick",
+        "https://engineering.washu.edu/faculty/Aaron-Bobick.html"
+      ],
+      [
+        "Nathan Jacobs",
+        "https://engineering.washu.edu/faculty/Nathan-Jacobs.html"
+      ],
+      [
+        "William Yeoh",
+        "https://engineering.washu.edu/faculty/William-Yeoh.html"
+      ]
+    ]
+  },
+  "University of Arizona": {
+    "directories": [
+      "https://www.cs.arizona.edu/person/faculty",
+      "https://cs.arizona.edu/person-categories/artificial-intelligence",
+      "https://cs.arizona.edu/person-categories/affiliated-faculty"
+    ],
+    "profiles": [
+      [
+        "Dan Wang",
+        "https://cs.arizona.edu/person-categories/artificial-intelligence"
+      ],
+      [
+        "Ehsan Azimi",
+        "https://cs.arizona.edu/person-categories/affiliated-faculty"
+      ]
+    ]
+  },
+  "University of California, Santa Cruz": {
+    "directories": [
+      "https://engineering.ucsc.edu/departments/computer-science-and-engineering/faculty/",
+      "https://engineering.ucsc.edu/research/robotics/",
+      "https://engineering.ucsc.edu/research/artificial-intelligence/"
+    ],
+    "profiles": [
+      [
+        "Tae Myung Huh",
+        "https://engineering.ucsc.edu/research/robotics/"
+      ],
+      [
+        "Cihang Xie",
+        "https://engineering.ucsc.edu/research/artificial-intelligence/"
+      ]
+    ]
+  },
+  "Arizona State University": {
+    "directories": [
+      "https://scai.engineering.asu.edu/faculty/",
+      "https://scai.engineering.asu.edu/research-labs/",
+      "https://ras.engineering.asu.edu/faculty/"
+    ],
+    "profiles": [
+      [
+        "Yezhou Yang",
+        "https://search.asu.edu/profile/3020558"
+      ],
+      [
+        "Hani Ben Amor",
+        "https://search.asu.edu/profile/2736878"
+      ]
+    ]
+  },
+  "University of Rochester": {
+    "directories": [
+      "https://www.cs.rochester.edu/people/faculty/index.html"
+    ],
+    "profiles": [
+      [
+        "Chenliang Xu",
+        "https://www.cs.rochester.edu/people/faculty/xu_chenliang/index.html"
+      ],
+      [
+        "Christopher Kanan",
+        "https://www.cs.rochester.edu/people/faculty/kanan_chris/index.html"
+      ]
+    ]
+  },
+  "Georgia Institute of Technology": {
+    "directories": [
+      "https://www.cc.gatech.edu/people/faculty"
+    ]
+  },
+  "Columbia University": {
+    "directories": [
+      "https://www.cs.columbia.edu/people/faculty/"
+    ]
+  },
+  "New York University": {
+    "directories": [
+      "https://cs.nyu.edu/dynamic/people/faculty/"
+    ]
+  },
+  "Stony Brook University": {
+    "directories": [
+      "https://www.cs.stonybrook.edu/people/faculty"
+    ]
+  }
 }

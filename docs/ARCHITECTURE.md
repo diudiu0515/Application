@@ -1,32 +1,49 @@
 # Product architecture
 
-The product is organized around the core relationship:
+The core graph is:
 
-`School → Program → Faculty ↔ ResearchProject → Application`
+`CandidateProfile → ResearchProject ↔ Faculty → Program → Application`
 
-Supporting evidence is attached through `Source`, `VerificationRecord`, and `EvidenceClaim`. User decisions are preserved separately from source facts so a status never destroys its rationale.
+`Source → VerificationRecord / CommunityClaim → Faculty or Program` supplies the evidence layer. User decisions, completion state and change history remain separate from source claims so refreshes do not erase judgment.
+
+## Runtime layers
+
+1. `seed.js`, `modules-data.js` and `summer-data.js` provide editable initial records.
+2. `data/generated-faculty.js` supplies recurring Top 50 candidate evidence.
+3. `mergeAuto()` updates discovery evidence while preserving human review, consideration, contact, tags, checklists and decision rationale.
+4. browser `localStorage` is the active no-server repository.
+5. JSON backup/restore is the portable full snapshot; CSV handles entity-level exchange.
+6. every mutation calls `persist()` and appends a timestamped history event.
+
+This is a deliberate static/local-first deployment on GitHub Pages. `prisma/schema.prisma` is the normalized migration design for a future authenticated SQLite/PostgreSQL deployment, not a hidden server dependency.
 
 ## Information architecture
 
-- Dashboard: deadlines, funnel, research queue, tasks, evidence health
-- Programs: requirements, funding, admission model, faculty depth
-- Faculty: research fit, consideration, recruiting, completion, network and contact
-- Research Match: dimension-level Faculty × Project scores and explanations
-- Research: editable candidate profile and projects
-- Applications: shortlist, checklist progress and status
-- Planning: timeline, sources and verification
-- System: audit history and portable backups
+- Core: Dashboard, Programs, Faculty, Research Match.
+- My Research: candidate profile/projects, papers, publications and CV data.
+- Applications: school list, application checklist, SOP, recommendations and professor contact.
+- Planning: summer research, unified calendar, tests, costs, sources/verification and notes.
+- Faculty Intelligence: lab/Tsinghua network, community claims and evidence timeline.
+- Results: interviews and offers.
+- System: immutable-style audit history and data tools.
 
-## Runtime decision
+## Evidence precedence
 
-The deployed MVP is deliberately local-first: static HTML/CSS/JavaScript on GitHub Pages with browser localStorage. This satisfies serverless access and in-browser editing. JSON backup/restore provides portability; every mutation adds an audit event.
+1. official graduate school, department, university profile, faculty/lab and dated recruiting pages;
+2. scholarly/professional pages such as DBLP, Semantic Scholar, OpenReview, GitHub or public member profiles;
+3. community reports retained as anecdotes with raw wording and status.
 
-The complete relational design lives in `prisma/schema.prisma` for a later authenticated, multi-device deployment. Migrating means replacing the local repository adapter with an API-backed adapter while keeping the entities and UI workflow.
+A high-impact value (deadline, requirement, funding or recruiting) is confirmed only by a dated official field observation. Community claims never overwrite official fields. Conflicting active observations remain visible. Public contact data must retain a source; private contact details are never inferred.
 
-## Evidence rules
+## Faculty discovery and decisions
 
-1. Official department, graduate school, faculty and lab sources have highest priority.
-2. Professional sources can enrich but do not silently overwrite official facts.
-3. Community statements remain claims and display uncertainty.
-4. Recruiting, funding, deadlines and requirements require official confirmation.
-5. Public contact details retain their source; private addresses are never inferred.
+The collector scans the configured Top 50 official entry points and emits direction-related `needs_review` candidates. Live page keyword matches and conservative official-roster fallbacks are distinguishable. Per-school zero results and fetch errors are part of the product UI and report.
+
+Research fit and research completion are intentionally different:
+
+- fit measures topic/method/data/multimodal/robotics/LLM/recent work/collaboration alignment;
+- completion measures how much evidence the applicant has investigated;
+- GPA affects admission-risk and portfolio strategy, not faculty research quality;
+- summer opportunities have separate academic-fit and executable-eligibility scores.
+
+See [the full acceptance matrix](REQUIREMENTS_MATRIX.md) and [Top 50 methodology](TOP50_RESEARCH.md).
