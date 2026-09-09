@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-09T14:33:15.010997+00:00",
+  "generatedAt": "2026-09-09T14:42:22.010209+00:00",
   "schools": 50,
-  "candidates": 243,
+  "candidates": 250,
   "coveredSchools": 50,
   "zeroSchools": 0,
   "details": [
@@ -51,10 +51,9 @@
     {
       "rank": 5,
       "school": "University of Illinois Urbana-Champaign",
-      "candidates": 23,
+      "candidates": 28,
       "coverage": "covered",
       "errors": [
-        "https://siebelschool.illinois.edu/about/people/all-faculty/tozhang: TimeoutError",
         "https://siebelschool.illinois.edu/faculty/: HTTPError",
         "https://siebelschool.illinois.edu/directory/: HTTPError"
       ]
@@ -74,7 +73,6 @@
       "candidates": 1,
       "coverage": "covered",
       "errors": [
-        "https://robotics.cs.washington.edu/: RemoteDisconnected",
         "https://www.cs.washington.edu/faculty/: HTTPError",
         "https://www.cs.washington.edu/directory/: HTTPError"
       ]
@@ -92,7 +90,7 @@
     {
       "rank": 9,
       "school": "Princeton University",
-      "candidates": 7,
+      "candidates": 9,
       "coverage": "covered",
       "errors": [
         "https://www.cs.princeton.edu/faculty/: HTTPError",
@@ -144,7 +142,7 @@
     {
       "rank": 14,
       "school": "Columbia University",
-      "candidates": 6,
+      "candidates": 5,
       "coverage": "covered",
       "errors": []
     },
@@ -475,7 +473,7 @@
     {
       "rank": 48,
       "school": "Boston University",
-      "candidates": 2,
+      "candidates": 3,
       "coverage": "covered",
       "errors": [
         "https://www.bu.edu/cs/directory/: HTTPError"
