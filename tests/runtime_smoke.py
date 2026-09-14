@@ -5,9 +5,9 @@ import re
 import quickjs
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPTS = ["data/generated-faculty.js", "seed.js", "summer-data.js", "modules-data.js", "modules.js", "faculty-review.js", "data-tools.js", "candidate-workspace.js", "application-workspace.js", "evidence.js", "summer-workspace.js", "calendar-workspace.js", "fit-workspace.js", "decision-tools.js", "search-tools.js", "program-workspace.js", "shortlist-workspace.js", "materials-workspace.js", "intelligence-workspace.js", "faculty-operations.js", "faculty-detail-workspace.js", "requirements-completion.js", "app.js"]
+SCRIPTS = ["data/generated-faculty.js", "seed.js", "summer-data.js", "modules-data.js", "planning-data.js", "modules.js", "faculty-review.js", "data-tools.js", "candidate-workspace.js", "application-workspace.js", "evidence.js", "summer-workspace.js", "calendar-workspace.js", "fit-workspace.js", "decision-tools.js", "search-tools.js", "program-workspace.js", "shortlist-workspace.js", "materials-workspace.js", "intelligence-workspace.js", "faculty-operations.js", "faculty-detail-workspace.js", "requirements-completion.js", "planning-workspace.js", "recommendation-workspace.js", "app.js"]
 VIEWS = [
-    "dashboard", "programs", "faculty", "matrix", "research", "papers",
+    "roadmap", "dashboard", "programs", "faculty", "matrix", "research", "papers",
     "publications", "sop", "recommendations", "contact_workspace", "tests",
     "cv", "applications", "shortlist", "summer", "calendar", "costs",
     "sources", "labnetwork", "community", "faculty_timeline", "interviews",
@@ -47,6 +47,8 @@ def main():
     context = quickjs.Context()
     context.eval(PRELUDE)
     for relative in SCRIPTS:
+        if relative == "planning-data.js":
+            context.eval("var originalStarter = JSON.parse(JSON.stringify(SEED_DATA))")
         context.eval((ROOT / relative).read_text(encoding="utf-8"))
     for view in VIEWS:
         context.eval(f"currentView={view!r}")
@@ -86,6 +88,33 @@ def main():
     detail_html = context.eval("appended[appended.length-1].innerHTML")
     for label in ("Mainland China Applicant & Summer Research", "Official admissions source", "Summer routes at this school", "No publicly confirmed record yet"):
         assert label in detail_html, f"opened faculty modal missing {label}"
+    # Starter updates are conservative, idempotent, and work for old JSON backups.
+    assert context.eval("state.projects.find(x=>x.id==='p1').name") == "SocialFlux"
+    assert context.eval("state.tests.find(x=>x.id==='test1').type") == "IELTS"
+    assert context.eval("state.tests.find(x=>x.id==='test1').testDate") == ""
+    assert context.eval("state.publications.find(x=>x.id==='pub1').authorOrder") == ""
+    assert context.eval("state.milestones.length") == 16
+    assert context.eval("(function(){var s=clone(originalStarter);migratePlanning(s);migratePlanning(s);return s.projects[0].name==='SocialFlux'&&s.milestones.length===16})()")
+    assert context.eval("(function(){var s=clone(originalStarter);s.projects[0].contribution='My own contribution';s.tests[0].total=110;migratePlanning(s);return s.projects[0].name==='EmoTree-Bench'&&s.projects[0].contribution==='My own contribution'&&s.tests[0].type==='TOEFL'&&s.tests[0].total===110})()")
+    assert context.eval("(function(){var s=clone(originalStarter);s.milestones=[];migratePlanning(s);return s.milestones.length===0})()")
+    context.eval("setMilestoneDone(state.milestones[0].id,true)")
+    assert context.eval("JSON.parse(localStorage.getItem(STORAGE_KEY)).milestones[0].done")
+    context.eval("setMilestoneDone(state.milestones[0].id,false)")
+    assert context.eval("state.milestones[0].completedAt") == ""
+    context.eval("state.recommenders.push({id:'test-ref',name:'Test reference'}); planRecommendation('a1','test-ref'); planRecommendation('a1','test-ref')")
+    assert context.eval("recommendationCoverage('a1').planned") == 1
+    assert context.eval("recommendationCoverage('a1').submitted") == 0
+    assert context.eval("state.recommendations[0].deadline") == ""
+    context.eval("state.recommendations[0].submitted='false'")
+    assert context.eval("recommendationCoverage('a1').submitted") == 0
+    context.eval("state.recommendations[0].submitted=true;state.recommendations.push({...state.recommendations[0],id:'duplicate-request'})")
+    assert context.eval("recommendationCoverage('a1').submitted") == 1
+    assert context.eval("recommendationCoverage('a1').planned") == 1
+    context.eval("planRecommendation('missing-app','test-ref');planRecommendation('a1','missing-ref')")
+    assert context.eval("state.recommendations.length") == 2
+    context.eval("state.milestones[0].notes='<script>test</script>'; currentView='roadmap'")
+    assert "&lt;script&gt;test&lt;/script&gt;" in context.eval("renderView()")
+    print("planning migration and recommendation regression checks passed")
     print("runtime smoke passed")
 
 if __name__ == "__main__":

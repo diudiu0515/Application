@@ -20,6 +20,15 @@ The application follows the complete workflow `School → Program → Faculty �
 
 Automated faculty rows are candidate evidence, not confirmed facts. Recruiting, funding, deadlines and 2028 requirements remain visibly unverified until an official source is checked. See [Top 50 research methodology](docs/TOP50_RESEARCH.md) and the [48-module acceptance matrix](docs/REQUIREMENTS_MATRIX.md).
 
+## Application planning update
+
+- **申请路线** adds 16 editable milestones across research/language preparation, early summer outreach, summer arrangements, research/letters, applications, and interviews/offers. These dates are personal targets, not official deadlines. Completion is shared with the dashboard and calendar, and included in JSON backups and CSV exchange.
+- **Recommendations** now includes a school-by-recommender matrix, a separately editable required-letter count, and invitation/material/deadline/submission status. Planning a letter creates only a local record; it never sends an invitation. Letter deadlines start blank for school-specific verification. Duplicate records never inflate coverage counts.
+- Untouched starter records now use SocialFlux and IELTS preparation (target 8, registration/date unconfirmed). Placeholder first-author claims and invented submission dates were removed from the two starter publications. Edited records and completed milestones survive reloads and JSON restore.
+- Calendar dates use the browser's local calendar day, and completed tasks/letters/milestones are omitted from its action queue. Settings JSON export produces one complete backup.
+
+Validation: `npm run check` checks every script loaded by `index.html`; `python3 tests/runtime_smoke.py` exercises all 27 views plus migration, persistence, duplicate-letter counting and escaping. The optional browser regression requires Playwright with Chromium installed and a server on port 8080: `node tests/planning_browser.cjs`.
+
 ## No server required
 
 The deployed app is static HTML/CSS/JavaScript on GitHub Pages. Edits are saved to browser `localStorage`; every mutation appends a timestamped audit event in **Change History**. No backend or account is required.
