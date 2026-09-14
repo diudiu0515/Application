@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-09T16:12:56.718450+00:00",
+  "generatedAt": "2026-09-14T09:53:38.823813+00:00",
   "schools": 50,
-  "candidates": 244,
+  "candidates": 280,
   "coveredSchools": 50,
   "zeroSchools": 0,
   "details": [
@@ -38,13 +38,9 @@
     {
       "rank": 4,
       "school": "University of California, Berkeley",
-      "candidates": 4,
+      "candidates": 31,
       "coverage": "covered",
       "errors": [
-        "https://www2.eecs.berkeley.edu/Faculty/Lists/faculty.html: HTTPError",
-        "https://www2.eecs.berkeley.edu/Research/Areas/CIR/: HTTPError",
-        "https://rail.eecs.berkeley.edu/people.html: HTTPError",
-        "https://www2.eecs.berkeley.edu/Directories/directory-nostudents.html: HTTPError",
         "https://eecs.berkeley.edu/directory/: HTTPError"
       ]
     },
@@ -101,7 +97,7 @@
     {
       "rank": 10,
       "school": "University of Texas at Austin",
-      "candidates": 11,
+      "candidates": 12,
       "coverage": "covered",
       "errors": [
         "https://www.cs.utexas.edu/faculty/: HTTPError",
@@ -124,9 +120,14 @@
       "candidates": 2,
       "coverage": "covered",
       "errors": [
-        "https://cse.ucsd.edu/faculty/: HTTPError",
+        "https://cse.ucsd.edu/people: URLError",
+        "https://cse.ucsd.edu/faculty-research: URLError",
+        "https://cse.ucsd.edu/administration/human-resources/recruitment/faculty-positions: URLError",
+        "https://cse.ucsd.edu/faculty/: URLError",
         "https://cse.ucsd.edu/people/faculty/: HTTPError",
-        "https://cse.ucsd.edu/directory/: HTTPError"
+        "https://cse.ucsd.edu/people/: URLError",
+        "https://cse.ucsd.edu/directory/: HTTPError",
+        "https://cse.ucsd.edu/: URLError"
       ]
     },
     {
@@ -142,7 +143,7 @@
     {
       "rank": 14,
       "school": "Columbia University",
-      "candidates": 5,
+      "candidates": 6,
       "coverage": "covered",
       "errors": []
     },
@@ -159,7 +160,7 @@
     {
       "rank": 16,
       "school": "University of Pennsylvania",
-      "candidates": 3,
+      "candidates": 4,
       "coverage": "covered",
       "errors": [
         "https://www.cis.upenn.edu/directory/: HTTPError"
@@ -168,10 +169,11 @@
     {
       "rank": 17,
       "school": "University of Wisconsin-Madison",
-      "candidates": 2,
+      "candidates": 8,
       "coverage": "covered",
       "errors": [
-        "https://www.cs.wisc.edu/: URLError"
+        "https://www.cs.wisc.edu/people/faculty/: HTTPError",
+        "https://www.cs.wisc.edu/directory/: HTTPError"
       ]
     },
     {
@@ -186,7 +188,7 @@
     {
       "rank": 19,
       "school": "Purdue University",
-      "candidates": 7,
+      "candidates": 6,
       "coverage": "covered",
       "errors": [
         "https://www.cs.purdue.edu/faculty/: HTTPError",
@@ -232,7 +234,7 @@
     {
       "rank": 24,
       "school": "Johns Hopkins University",
-      "candidates": 14,
+      "candidates": 15,
       "coverage": "covered",
       "errors": [
         "https://www.cs.jhu.edu/directory/: HTTPError"
