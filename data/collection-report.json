@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-14T09:53:38.823813+00:00",
+  "generatedAt": "2026-09-21T09:57:33.138025+00:00",
   "schools": 50,
-  "candidates": 280,
+  "candidates": 281,
   "coveredSchools": 50,
   "zeroSchools": 0,
   "details": [
@@ -120,14 +120,9 @@
       "candidates": 2,
       "coverage": "covered",
       "errors": [
-        "https://cse.ucsd.edu/people: URLError",
-        "https://cse.ucsd.edu/faculty-research: URLError",
-        "https://cse.ucsd.edu/administration/human-resources/recruitment/faculty-positions: URLError",
-        "https://cse.ucsd.edu/faculty/: URLError",
+        "https://cse.ucsd.edu/faculty/: HTTPError",
         "https://cse.ucsd.edu/people/faculty/: HTTPError",
-        "https://cse.ucsd.edu/people/: URLError",
-        "https://cse.ucsd.edu/directory/: HTTPError",
-        "https://cse.ucsd.edu/: URLError"
+        "https://cse.ucsd.edu/directory/: HTTPError"
       ]
     },
     {
@@ -143,7 +138,7 @@
     {
       "rank": 14,
       "school": "Columbia University",
-      "candidates": 6,
+      "candidates": 5,
       "coverage": "covered",
       "errors": []
     },
@@ -188,7 +183,7 @@
     {
       "rank": 19,
       "school": "Purdue University",
-      "candidates": 6,
+      "candidates": 7,
       "coverage": "covered",
       "errors": [
         "https://www.cs.purdue.edu/faculty/: HTTPError",
@@ -210,7 +205,7 @@
     {
       "rank": 21,
       "school": "University of Southern California",
-      "candidates": 12,
+      "candidates": 13,
       "coverage": "covered",
       "errors": []
     },
