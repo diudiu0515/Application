@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-21T09:57:33.138025+00:00",
+  "generatedAt": "2026-09-28T10:59:02.887574+00:00",
   "schools": 50,
   "candidates": 281,
   "coveredSchools": 50,
@@ -138,7 +138,7 @@
     {
       "rank": 14,
       "school": "Columbia University",
-      "candidates": 5,
+      "candidates": 6,
       "coverage": "covered",
       "errors": []
     },
@@ -279,6 +279,7 @@
       "candidates": 7,
       "coverage": "covered",
       "errors": [
+        "https://www.cs.ucsb.edu/index.php/people: HTTPError",
         "https://www.cs.ucsb.edu/faculty/: HTTPError",
         "https://www.cs.ucsb.edu/people/: HTTPError",
         "https://www.cs.ucsb.edu/directory/: HTTPError"
@@ -287,7 +288,7 @@
     {
       "rank": 30,
       "school": "University of North Carolina at Chapel Hill",
-      "candidates": 3,
+      "candidates": 2,
       "coverage": "covered",
       "errors": [
         "https://cs.unc.edu/directory/: HTTPError"
