@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-28T10:59:02.887574+00:00",
+  "generatedAt": "2026-10-05T11:29:43.780000+00:00",
   "schools": 50,
-  "candidates": 281,
+  "candidates": 285,
   "coveredSchools": 50,
   "zeroSchools": 0,
   "details": [
@@ -47,7 +47,7 @@
     {
       "rank": 5,
       "school": "University of Illinois Urbana-Champaign",
-      "candidates": 28,
+      "candidates": 32,
       "coverage": "covered",
       "errors": [
         "https://siebelschool.illinois.edu/faculty/: HTTPError",
@@ -186,6 +186,7 @@
       "candidates": 7,
       "coverage": "covered",
       "errors": [
+        "https://www.purdue.edu/directory/: RemoteDisconnected",
         "https://www.cs.purdue.edu/faculty/: HTTPError",
         "https://www.cs.purdue.edu/directory/: HTTPError"
       ]
@@ -271,7 +272,12 @@
       "school": "University of California, Irvine",
       "candidates": 3,
       "coverage": "covered",
-      "errors": []
+      "errors": [
+        "https://ics.uci.edu/faculty/: URLError",
+        "https://ics.uci.edu/people/faculty/: URLError",
+        "https://ics.uci.edu/directory/: URLError",
+        "https://ics.uci.edu/: URLError"
+      ]
     },
     {
       "rank": 29,
@@ -279,7 +285,6 @@
       "candidates": 7,
       "coverage": "covered",
       "errors": [
-        "https://www.cs.ucsb.edu/index.php/people: HTTPError",
         "https://www.cs.ucsb.edu/faculty/: HTTPError",
         "https://www.cs.ucsb.edu/people/: HTTPError",
         "https://www.cs.ucsb.edu/directory/: HTTPError"
@@ -288,7 +293,7 @@
     {
       "rank": 30,
       "school": "University of North Carolina at Chapel Hill",
-      "candidates": 2,
+      "candidates": 3,
       "coverage": "covered",
       "errors": [
         "https://cs.unc.edu/directory/: HTTPError"
@@ -391,7 +396,7 @@
     {
       "rank": 40,
       "school": "Northeastern University",
-      "candidates": 19,
+      "candidates": 17,
       "coverage": "covered",
       "errors": [
         "https://www.khoury.northeastern.edu/people/faculty/: HTTPError",
@@ -412,7 +417,7 @@
     {
       "rank": 42,
       "school": "Stony Brook University",
-      "candidates": 6,
+      "candidates": 7,
       "coverage": "covered",
       "errors": [
         "https://www.cs.stonybrook.edu/faculty/: HTTPError",
