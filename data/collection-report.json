@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-05T11:29:43.780000+00:00",
+  "generatedAt": "2026-10-12T11:58:47.190706+00:00",
   "schools": 50,
-  "candidates": 285,
+  "candidates": 281,
   "coveredSchools": 50,
   "zeroSchools": 0,
   "details": [
@@ -47,7 +47,7 @@
     {
       "rank": 5,
       "school": "University of Illinois Urbana-Champaign",
-      "candidates": 32,
+      "candidates": 28,
       "coverage": "covered",
       "errors": [
         "https://siebelschool.illinois.edu/faculty/: HTTPError",
@@ -86,7 +86,7 @@
     {
       "rank": 9,
       "school": "Princeton University",
-      "candidates": 9,
+      "candidates": 7,
       "coverage": "covered",
       "errors": [
         "https://www.cs.princeton.edu/faculty/: HTTPError",
@@ -164,7 +164,7 @@
     {
       "rank": 17,
       "school": "University of Wisconsin-Madison",
-      "candidates": 8,
+      "candidates": 7,
       "coverage": "covered",
       "errors": [
         "https://www.cs.wisc.edu/people/faculty/: HTTPError",
@@ -186,7 +186,6 @@
       "candidates": 7,
       "coverage": "covered",
       "errors": [
-        "https://www.purdue.edu/directory/: RemoteDisconnected",
         "https://www.cs.purdue.edu/faculty/: HTTPError",
         "https://www.cs.purdue.edu/directory/: HTTPError"
       ]
@@ -396,7 +395,7 @@
     {
       "rank": 40,
       "school": "Northeastern University",
-      "candidates": 17,
+      "candidates": 20,
       "coverage": "covered",
       "errors": [
         "https://www.khoury.northeastern.edu/people/faculty/: HTTPError",
