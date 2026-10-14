@@ -57,12 +57,8 @@ window.SEED_DATA = {
     {id:"a2",programId:"pr3",status:"Shortlisted",deadline:"2027-12-10",progress:24,tasks:["Program researched","Faculty shortlist complete"],notes:"Strong two-project coverage."},
     {id:"a3",programId:"pr4",status:"Researching",deadline:"2027-12-15",progress:16,tasks:["Program researched"],notes:"Verify advising availability."}
   ],
-  tasks: [
-    {id:"t1",title:"Review 3 recent papers from Morency lab",due:"2026-08-27",type:"Paper",done:false},
-    {id:"t2",title:"Verify CMU faculty recruiting status",due:"2026-09-02",type:"Faculty",done:false},
-    {id:"t3",title:"Draft candidate research narrative",due:"2026-09-08",type:"SOP",done:false},
-    {id:"t4",title:"Export monthly backup",due:"2026-09-20",type:"Data",done:false}
-  ],
+  // Personal tasks start empty; legacy examples are handled by migrateDates.
+  tasks: [],
   sources: [
     {id:"s1",entity:"Stanford CS PhD",name:"Department website",url:"https://www.cs.stanford.edu/admissions/phd-admissions",type:"official_department",lastChecked:"2026-08-10",confidence:"high",status:"outdated",claim:"Deadline and requirements placeholder; verify for 2028 cycle."},
     {id:"s2",entity:"MIT EECS PhD",name:"EECS admissions",url:"https://www.eecs.mit.edu/academics/graduate-programs/admission-process/",type:"official_department",lastChecked:"2026-08-10",confidence:"high",status:"outdated",claim:"Cycle-specific deadline must be rechecked."},
