@@ -5,7 +5,7 @@ import re
 import quickjs
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPTS = ["data/generated-faculty.js", "seed.js", "summer-data.js", "modules-data.js", "planning-data.js", "modules.js", "faculty-review.js", "data-tools.js", "candidate-workspace.js", "application-workspace.js", "evidence.js", "summer-workspace.js", "calendar-workspace.js", "fit-workspace.js", "decision-tools.js", "search-tools.js", "program-workspace.js", "shortlist-workspace.js", "materials-workspace.js", "intelligence-workspace.js", "faculty-operations.js", "faculty-detail-workspace.js", "requirements-completion.js", "planning-workspace.js", "recommendation-workspace.js", "app.js"]
+SCRIPTS = ["data/generated-faculty.js", "seed.js", "summer-data.js", "modules-data.js", "planning-data.js", "date-policy.js", "modules.js", "faculty-review.js", "data-tools.js", "candidate-workspace.js", "application-workspace.js", "evidence.js", "summer-workspace.js", "calendar-workspace.js", "fit-workspace.js", "decision-tools.js", "search-tools.js", "program-workspace.js", "shortlist-workspace.js", "materials-workspace.js", "intelligence-workspace.js", "faculty-operations.js", "faculty-detail-workspace.js", "requirements-completion.js", "planning-workspace.js", "recommendation-workspace.js", "app.js"]
 VIEWS = [
     "roadmap", "dashboard", "programs", "faculty", "matrix", "research", "papers",
     "publications", "sop", "recommendations", "contact_workspace", "tests",
