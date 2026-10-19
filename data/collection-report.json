@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-12T11:58:47.190706+00:00",
+  "generatedAt": "2026-10-19T09:56:38.068430+00:00",
   "schools": 50,
-  "candidates": 281,
+  "candidates": 283,
   "coveredSchools": 50,
   "zeroSchools": 0,
   "details": [
@@ -86,7 +86,7 @@
     {
       "rank": 9,
       "school": "Princeton University",
-      "candidates": 7,
+      "candidates": 9,
       "coverage": "covered",
       "errors": [
         "https://www.cs.princeton.edu/faculty/: HTTPError",
