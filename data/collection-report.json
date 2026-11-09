@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-02T12:23:55.670730+00:00",
+  "generatedAt": "2026-11-09T12:51:52.182301+00:00",
   "schools": 50,
-  "candidates": 284,
+  "candidates": 278,
   "coveredSchools": 50,
   "zeroSchools": 0,
   "details": [
@@ -47,7 +47,7 @@
     {
       "rank": 5,
       "school": "University of Illinois Urbana-Champaign",
-      "candidates": 33,
+      "candidates": 29,
       "coverage": "covered",
       "errors": [
         "https://siebelschool.illinois.edu/faculty/: HTTPError",
@@ -76,7 +76,7 @@
     {
       "rank": 8,
       "school": "Georgia Institute of Technology",
-      "candidates": 2,
+      "candidates": 1,
       "coverage": "covered",
       "errors": [
         "https://www.cc.gatech.edu/faculty/: HTTPError",
@@ -97,10 +97,9 @@
     {
       "rank": 10,
       "school": "University of Texas at Austin",
-      "candidates": 12,
+      "candidates": 11,
       "coverage": "covered",
       "errors": [
-        "https://rpl.cs.utexas.edu/: URLError",
         "https://www.cs.utexas.edu/faculty/: HTTPError",
         "https://www.cs.utexas.edu/people/faculty/: HTTPError",
         "https://www.cs.utexas.edu/directory/: HTTPError"
@@ -293,9 +292,16 @@
       "rank": 30,
       "school": "University of North Carolina at Chapel Hill",
       "candidates": 3,
-      "coverage": "covered",
+      "coverage": "stale_fallback",
       "errors": [
-        "https://cs.unc.edu/directory/: HTTPError"
+        "https://cs.unc.edu/people/faculty/: HTTPError",
+        "https://cs.unc.edu/about/people/: HTTPError",
+        "https://cs.unc.edu/about/faculty-hiring/: HTTPError",
+        "https://cs.unc.edu/faculty/: HTTPError",
+        "https://cs.unc.edu/people/: HTTPError",
+        "https://cs.unc.edu/directory/: HTTPError",
+        "https://cs.unc.edu/: HTTPError",
+        "University of North Carolina at Chapel Hill: retained 3 previous candidates because all current discovery routes failed"
       ]
     },
     {
@@ -313,6 +319,7 @@
       "candidates": 3,
       "coverage": "covered",
       "errors": [
+        "https://cs.uchicago.edu/people/faculty/: HTTPError",
         "https://cs.uchicago.edu/faculty/: HTTPError",
         "https://cs.uchicago.edu/directory/: HTTPError"
       ]
@@ -354,7 +361,7 @@
       "candidates": 3,
       "coverage": "covered",
       "errors": [
-        "https://www.cs.rutgers.edu/: URLError"
+        "https://www.cs.rutgers.edu/: HTTPError"
       ]
     },
     {
